@@ -49,13 +49,27 @@ public class UnirListas2 {
         Lista listaTemporal = new Lista();
         Nodo recorre = lista.primero;
         while (recorre != null) {
-
+            listaTemporal=insertarOrdenado(listaTemporal,recorre);
+            recorre=recorre.getSig();
         }
         return listaTemporal;
     }
 
-    private static void insertarOrdenado(Lista lista, Nodo nodo) {
-
+    private static Lista insertarOrdenado(Lista lista, Nodo nodo) {
+        if((lista.primero == null) || ((int)nodo.getInfo() <= (int)lista.primero.getInfo())){
+            nodo.setSig(lista.primero);
+            lista.primero=nodo;
+        }else{
+            Nodo actual=lista.primero;
+            Nodo anterior=null;
+            while (actual!=null && (int)nodo.getInfo() > (int)actual.getInfo()){
+                anterior=actual;
+                actual=actual.getSig();
+            }
+            anterior.setSig(nodo);
+            nodo.setSig(actual);
+        }
+        return lista;
     }
 
 }
