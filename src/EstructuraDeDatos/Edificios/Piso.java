@@ -5,7 +5,7 @@ import EstructuraDeDatos.Nodo;
 public class Piso {
     private int NumDepiso;
     private Nodo departamento;
-
+    private int MAX=3;
     public Piso(int numDepiso, Nodo departamento) {
         this.NumDepiso = numDepiso;
         this.departamento = departamento;
