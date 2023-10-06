@@ -2,7 +2,9 @@ package EstructuraDeDatos.Edificios;
 
 import EstructuraDeDatos.Nodo;
 
-public class Edificio {
+import java.io.Serializable;
+
+public class Edificio implements Serializable {
     private String nombre;
     private Nodo pisos;
 

@@ -1,6 +1,8 @@
 package EstructuraDeDatos.Edificios;
 
-public class Departamento {
+import java.io.Serializable;
+
+public class Departamento implements Serializable {
     private boolean rentado;
     private int numDepa;
 
