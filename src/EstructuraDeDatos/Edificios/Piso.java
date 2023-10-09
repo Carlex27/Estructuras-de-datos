@@ -1,29 +1,29 @@
 package EstructuraDeDatos.Edificios;
 
+import EstructuraDeDatos.Lista;
 import EstructuraDeDatos.Nodo;
 
 import java.io.Serializable;
 
 public class Piso implements Serializable {
-    private int NumDepiso;
+    private int numPiso;
     private Nodo departamento;
-    private int MAX=3;
 
-    public Piso(int numDepiso, Nodo departamento) {
-        this.NumDepiso = numDepiso;
+    public Piso(int numPiso, Nodo departamento) {
+        this.numPiso = numPiso;
         this.departamento = departamento;
     }
     public Piso() {
-        this.NumDepiso = 0;
+        this.numPiso = 0;
         this.departamento = null;
     }
 
     public int getNumDepiso() {
-        return NumDepiso;
+        return numPiso;
     }
 
     public void setNumDepiso(int numDepiso) {
-        NumDepiso = numDepiso;
+        numPiso = numDepiso;
     }
 
     public Nodo getDepartamento() {
@@ -32,14 +32,6 @@ public class Piso implements Serializable {
 
     public void setDepartamento(Nodo departamento) {
         this.departamento = departamento;
-    }
-
-    public int getMAX() {
-        return MAX;
-    }
-
-    public void setMAX(int MAX) {
-        this.MAX = MAX;
     }
 
 }

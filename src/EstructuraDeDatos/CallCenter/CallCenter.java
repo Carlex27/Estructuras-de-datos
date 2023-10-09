@@ -43,21 +43,21 @@ public class CallCenter {
                 try {
                     if (!operador1.estaVacia()) {
                         llamada = (Llamada) operador1.quitar();
-                        System.out.println("Operador 1, atendio la llamada del numero: " + llamada.numero + " y duro: " + llamada.duracion + " segundos.");
-                        operador1.imprimir();
-                        System.out.println("");
+                        System.out.println("Operador 1, atendio la llamada del numero: " + llamada.numero + " y duracion: " + llamada.duracion + " segundos.");
+                        operador1.imprimirLlamdas();
+                        System.out.println();
                     }
                     if (!operador2.estaVacia()) {
                         llamada = (Llamada) operador2.quitar();
-                        System.out.println("Operador 2, atendio la llamada del numero: " + llamada.numero + " y duro: " + llamada.duracion + " segundos.");
-                        operador2.imprimir();
-                        System.out.println("");
+                        System.out.println("Operador 2, atendio la llamada del numero: " + llamada.numero + " y duracion: " + llamada.duracion + " segundos.");
+                        operador2.imprimirLlamdas();
+                        System.out.println();
                     }
                     if (!operador3.estaVacia()) {
                         llamada = (Llamada) operador3.quitar();
-                        System.out.println("Operador 3, atendio la llamada del numero: " + llamada.numero + " y duro: " + llamada.duracion + " segundos.");
-                        operador3.imprimir();
-                        System.out.println("");
+                        System.out.println("Operador 3, atendio la llamada del numero: " + llamada.numero + " y duracion: " + llamada.duracion + " segundos.");
+                        operador3.imprimirLlamdas();
+                        System.out.println();
                     }
                 }catch (Exception e){
                     System.out.print(e.getMessage());

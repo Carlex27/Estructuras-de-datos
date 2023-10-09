@@ -1,4 +1,7 @@
 package EstructuraDeDatos;
+
+import EstructuraDeDatos.CallCenter.Llamada;
+
 public class TipoCola {
     private int frente, ultimo;
     private static final int MAX = 4;
@@ -55,6 +58,18 @@ public class TipoCola {
         System.out.print("Elementos haciendo fila: ");
         for (int i = 0; i <= MAX; i++)
             System.out.print(cola[i] + ",");
+        System.out.println();
+    }
+    public void imprimirLlamdas() {
+        System.out.println("Posición de frente: " + frente + " ultimo: " + ultimo);
+        System.out.print("Elementos haciendo fila: ");
+        for (int i = 0; i <= MAX; i++) {
+            if(cola[i]!=null){
+                Llamada llamada=(Llamada)cola[i];
+                System.out.print("(Numero: "+llamada.numero+ "),");
+            }else
+                System.out.print("null,");
+        }
         System.out.println();
     }
 }

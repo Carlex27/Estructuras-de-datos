@@ -29,4 +29,5 @@ public class Departamento implements Serializable {
     public void setRentado(boolean rentado) {
         this.rentado = rentado;
     }
+
 }
