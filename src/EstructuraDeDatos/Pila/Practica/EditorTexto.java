@@ -1,4 +1,4 @@
-package Pila;
+package EstructuraDeDatos.Pila.Practica;
 
 import java.util.Scanner;
 

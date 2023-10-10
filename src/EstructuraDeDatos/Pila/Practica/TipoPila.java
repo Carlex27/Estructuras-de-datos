@@ -1,4 +1,4 @@
-package Pila.Practica;
+package EstructuraDeDatos.Pila.Practica;
 
 public class TipoPila {
     private Object pila[];

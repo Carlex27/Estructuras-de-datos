@@ -1,16 +1,19 @@
 package EstructuraDeDatos.ListasEnlazadas;
-public class Lista {
+
+import java.io.Serializable;
+
+public class Lista implements Serializable {
     public Nodo primero;
     public Lista(){
         primero=null;
     }
-    public Lista insertarInicio(Object entrada){
+    public void insertarInicio(Object entrada){
         Nodo nuevo = new Nodo(entrada);  //SE CREA EL NUEVO NODO
         nuevo.setSig(primero);
         primero=nuevo;
-        return this;
+
     }
-    public Lista insertarSeg(Object entrada){
+    public void insertarSeg(Object entrada){
         Nodo nuevo = new Nodo(entrada);
         if(primero==null){ //SI LA LISTA ESTA VACIA
             primero=nuevo;
@@ -19,9 +22,9 @@ public class Lista {
             primero.setSig(nuevo);
 
         }
-        return this;
+
     }
-    public Lista insetarFinal(Object entrada){
+    public void insertarFinal(Object entrada){
         Nodo nuevo = new Nodo(entrada);
         Nodo recorre;
         if(primero==null){
@@ -33,16 +36,16 @@ public class Lista {
             }
             recorre.setSig(nuevo);
         }
-        return this;
+
     }
 
-    public Lista eleminarInicio(){
+    public void eleminarInicio(){
         if(primero!=null){
             primero=primero.sig;
         }
-        return this;
+
     }
-    public Lista eliminarSeg(){
+    public void eliminarSeg(){
         Nodo borrar;
         if(primero!=null){
             borrar=primero.sig;
@@ -51,9 +54,9 @@ public class Lista {
             else
                 primero=null;
         }
-        return this;
+
     }
-    public Lista eliminarFinal(){
+    public void eliminarFinal(){
         Nodo recorre,anterior;
         if(primero!=null){
             recorre=primero;
@@ -68,18 +71,24 @@ public class Lista {
                 primero=null;
             }
         }
-        return this;
+
     }
     public void imprimir(){ //METODO PARA IMPRIMIR LA LISTA
         Nodo recorre;
+        int i=0;
         if(primero!=null){
             recorre=primero;
-            if(recorre.getSig()==null){
-                System.out.print(recorre.getInfo() + " ");
-            }
             while (recorre.getSig()!=null){
-                System.out.print(recorre.getInfo()+ " ");
+                System.out.print(recorre.getInfo()+ ", ");
                 recorre=recorre.getSig();
+                i++;
+                if(i==30){
+                    System.out.println();
+                    i=0;
+                }
+            }
+            if(recorre.getSig()==null){
+                System.out.print(recorre.getInfo() + ", ");
             }
         }else{
             System.out.println("Lista vacia");
@@ -108,6 +117,9 @@ public class Lista {
             return false;
         }
         return false;
+    }
+    public boolean estaVacia(){
+        return primero == null;
     }
 
 }

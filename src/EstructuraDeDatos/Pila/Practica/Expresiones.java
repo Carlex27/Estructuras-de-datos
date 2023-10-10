@@ -1,9 +1,8 @@
-package Pila.Practica;
-
+package EstructuraDeDatos.Pila.Practica;
 
 import java.util.Scanner;
 
-public class Expresiones2 {
+public class Expresiones {
     static Scanner leer = new Scanner(System.in);
     static String posfijo="";
     static TipoPila pila = new TipoPila();

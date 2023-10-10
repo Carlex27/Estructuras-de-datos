@@ -1,7 +1,7 @@
 package EstructuraDeDatos.PilasDinamicas;
 
-import EstructuraDeDatos.Lista;
-import EstructuraDeDatos.Nodo;
+import EstructuraDeDatos.ListasEnlazadas.Lista;
+import EstructuraDeDatos.ListasEnlazadas.Nodo;
 public class ListasPilas extends Lista {
     Nodo tope;
     public ListasPilas(){

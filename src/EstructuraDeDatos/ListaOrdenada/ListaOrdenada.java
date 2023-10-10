@@ -1,7 +1,7 @@
 package EstructuraDeDatos.ListaOrdenada;
 
-import EstructuraDeDatos.Lista;
-import EstructuraDeDatos.Nodo;
+import EstructuraDeDatos.ListasEnlazadas.Lista;
+import EstructuraDeDatos.ListasEnlazadas.Nodo;
 public class ListaOrdenada extends Lista {
     public void insertar(int elemeto){
         Nodo nuevo;

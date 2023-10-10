@@ -1,4 +1,4 @@
-package EstructuraDeDatos;
+package EstructuraDeDatos.ColaEstatica;
 
 import EstructuraDeDatos.CallCenter.Llamada;
 

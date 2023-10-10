@@ -1,6 +1,6 @@
-package EstructuraDeDatos.ListaOrdenada;
+package EstructuraDeDatos.ListaOrdenada.Ejercicio;
 
-import EstructuraDeDatos.Lista;
+import EstructuraDeDatos.ListaOrdenada.ListaOrdenada;
 
 import java.util.Scanner;
 

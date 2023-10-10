@@ -1,4 +1,6 @@
-package Pila;
+package EstructuraDeDatos.Pila.Ejercicios;
+
+
 
 import java.util.Scanner;
 

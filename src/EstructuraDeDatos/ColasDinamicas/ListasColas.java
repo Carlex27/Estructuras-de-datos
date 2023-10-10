@@ -1,7 +1,7 @@
 package EstructuraDeDatos.ColasDinamicas;
 
-import EstructuraDeDatos.Lista;
-import EstructuraDeDatos.Nodo;
+import EstructuraDeDatos.ListasEnlazadas.Lista;
+import EstructuraDeDatos.ListasEnlazadas.Nodo;
 
 public class ListasColas extends Lista {
     Nodo frente, ultimo;

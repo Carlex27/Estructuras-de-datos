@@ -1,4 +1,4 @@
-package Pila;
+package EstructuraDeDatos.Pila;
 
 public class TipoPila {
     private Object pila[];

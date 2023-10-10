@@ -1,4 +1,6 @@
-package EstructuraDeDatos;
+package EstructuraDeDatos.ColaEstatica.Ejercicio;
+
+import EstructuraDeDatos.ColaEstatica.TipoCola;
 
 public class UsoCola {
     public static void main(String[] args) {

@@ -1,4 +1,6 @@
-package Pila;
+package EstructuraDeDatos.Pila.Ejercicios;
+
+
 
 public class UsoPila {
     public static void main(String[] args) {

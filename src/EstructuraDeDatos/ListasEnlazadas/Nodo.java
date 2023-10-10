@@ -1,6 +1,8 @@
 package EstructuraDeDatos.ListasEnlazadas;
 
-public class Nodo {
+import java.io.Serializable;
+
+public class Nodo implements Serializable {
     public Object info;
     public Nodo sig;
     public Nodo(Object info){
