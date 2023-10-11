@@ -1,6 +1,7 @@
 package EstructuraDeDatos.Edificios;
 
-import EstructuraDeDatos.ListasEnlazadas.Nodo;
+import EstructuraDeDatos.Lista;
+import EstructuraDeDatos.Nodo;
 
 import java.io.Serializable;
 

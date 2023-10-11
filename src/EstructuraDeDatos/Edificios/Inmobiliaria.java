@@ -1,8 +1,9 @@
 package EstructuraDeDatos.Edificios;
 
-import EstructuraDeDatos.ListasEnlazadas.Lista;
-import EstructuraDeDatos.ListasEnlazadas.Nodo;
 
+
+import EstructuraDeDatos.Lista;
+import EstructuraDeDatos.Nodo;
 import java.io.*;
 import java.util.Scanner;
 
