@@ -38,7 +38,7 @@ public class Expresiones {
                 if(operador(c)){
                     posfijo+=aux+",";
                     aux="";
-                    if(!pila.pilaVacia() && (prioridad(c)>=prioridad((Character) pila.UltimoElem()))){
+                    if(!pila.pilaVacia() && (prioridad(c)>prioridad((Character) pila.UltimoElem()))){
                         pila.meter(c);
                     }else{
                         while (!pila.pilaVacia() && ((Character) pila.UltimoElem() !='(')){
@@ -100,8 +100,9 @@ public class Expresiones {
                         case "/":
                             A=Integer.parseInt((String) pila.sacar());
                             B=Integer.parseInt((String) pila.sacar());
-                            if(B!=0)
-                                aux= String.valueOf(A/B);
+                            if(B!=0) {
+                                aux= String.valueOf((double) B/A);
+                            }
                             pila.meter(aux);
                             break;
                     }

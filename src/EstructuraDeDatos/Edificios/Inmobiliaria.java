@@ -118,7 +118,7 @@ public class Inmobiliaria {
         }
         System.out.println("Edificio " + edificio.getNombre());
         System.out.println("Piso " + piso.getNumDepiso());
-        System.out.println("Departamento # " +depa.getNumDepa() + "Disponible: " + depa.isRentado() );
+        System.out.println("Departamento #" +depa.getNumDepa() + " Disponible: " + depa.isRentado() );
     }
 
     private static void consultarDepartamentos() {
@@ -139,7 +139,7 @@ public class Inmobiliaria {
         System.out.println("Piso " + piso.getNumDepiso());
         while (departamentos!=null){
             depa= (Departamento) departamentos.getInfo();
-            System.out.println("Departamento numero: " + depa.getNumDepa() + "Disponible: " + depa.isRentado());
+            System.out.println("Departamento #" + depa.getNumDepa() + " Disponible: " + depa.isRentado());
             departamentos=departamentos.getSig();
         }
     }
