@@ -57,7 +57,7 @@ public class CallCenter {
                     if (!operador3.estaVacia()) {
                         llamada = (Llamada) operador3.quitar();
                         System.out.println("Operador 3, atendio la llamada del numero: " + llamada.numero +
-                                " y duracion: " + llamada.duracion + " segundos.");
+                                " y duracion: " + llamada.duracion + " segundos. ");
                         operador3.imprimirLlamdas();
                         System.out.println();
                     }

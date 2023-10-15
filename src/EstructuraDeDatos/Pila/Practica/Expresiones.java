@@ -72,7 +72,7 @@ public class Expresiones {
 
     private static void evaluar() {
         pila.limpiarPila();
-        int A = 0,B=0;
+        int A=0,B=0;
         String aux="";
         String partes[]= posfijo.split(",+");
         try{
