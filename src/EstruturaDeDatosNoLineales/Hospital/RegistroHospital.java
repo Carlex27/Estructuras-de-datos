@@ -14,14 +14,14 @@ public class RegistroHospital {
         pacientes.insertar(paciente3);
         pacientes.insertar(paciente4);
         try{
-            modificarRegistro(4);
-            Paciente pacientetemp=pacientes.buscar(4);
-            System.out.println(pacientetemp.toString());
+            pacientes.borrar(2);
+            System.out.println();
         }catch (Exception e){
-
+            
         }
     }
     public static void agregarPaciente(){
+        //Metodo para agregar un paciente
         Scanner leer = new Scanner(System.in);
         try{
             System.out.println("Registra nuevo paciente");
@@ -33,19 +33,22 @@ public class RegistroHospital {
             int edad= leer.nextInt();
             System.out.println("Dime el diagnostico del paciente");
             String diagnostico=leer.nextLine();
+            //Agrega al arbol el nuevo objeto Paciente
             pacientes.insertar(new Paciente(numID,nombre,edad,diagnostico));
         }catch (Exception e){
             System.out.println(e.getMessage());
         }
     }
     public static void  modificarRegistro(int numID){
+        //Metodo que modifica el registro de un paciente
         Scanner leer = new Scanner(System.in);
         Scanner leerString= new Scanner(System.in);
         boolean ban = true;
         String aux="";
         Paciente paciente=pacientes.buscar(numID);
+        //Verifiica si el paciente es null
         if(paciente==null){
-            return;
+            return; //Termina el metodo
         }
         System.out.println("Se va a modificar el registro de un paciente");
         System.out.println(paciente.toString());
@@ -55,31 +58,30 @@ public class RegistroHospital {
             System.out.println("3.Diagnostico del paciente");
             System.out.println("4.Salir");
             int opc= leer.nextInt();
-
-            switch (opc){
-                case 1:
+            //Esocger entre las opciones
+            switch (opc) {
+                case 1 -> {
                     System.out.println("Ingrese el nombre");
-                    aux= leerString.nextLine();
+                    aux = leerString.nextLine();
                     paciente.setNombre(aux);
-                    break;
-                case 2:
+                }
+                case 2 -> {
                     System.out.println("Ingrese la edad");
-                    int edad= leer.nextInt();
+                    int edad = leer.nextInt();
                     paciente.setEdad(edad);
-                    break;
-                case 3:
+                }
+                case 3 -> {
                     System.out.println("Ingrese el diagnostico");
-                    aux= leerString.nextLine();
+                    aux = leerString.nextLine();
                     paciente.setDiagnostico(aux);
-                    break;
-                case 4:
+                }
+                case 4 -> {
                     System.out.println("Terminando modificaciones");
-                    ban=false;
-                    break;
-                default:
-                    System.out.println("No es una opcion dispoible");
+                    ban = false;
+                }
+                default -> System.out.println("No es una opcion dispoible");
             }
-
+            System.out.println("Nuevos datos del paciente");
             System.out.println(paciente.toString());
         }while (ban);
     }
