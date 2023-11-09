@@ -52,4 +52,13 @@ public class Paciente implements Serializable {
     public void setDiagnostico(String diagnostico) {
         this.diagnostico = diagnostico;
     }
+
+    @Override
+    public String toString() {
+        return "Paciente." +
+                "\nnumID: " + numID +
+                "\nNombre: " + nombre +
+                "\nEdad: " + edad +
+                "\nDiagnostico: " + diagnostico  ;
+    }
 }
