@@ -12,26 +12,48 @@ import java.util.Scanner;
 public class RegistroHospital {
     static ArbolPacientes pacientes = new ArbolPacientes();
     public static void main(String[] args) {
-        Paciente paciente1= new Paciente(1,"Carlos",20,"gripa");
-        Paciente paciente2= new Paciente(2,"juan",20,"gripa");
-        Paciente paciente3= new Paciente(0,"angel",20,"gripa");
-        Paciente paciente4= new Paciente(4,"oscar",20,"gripa");
-        Paciente paciente5= new Paciente(3,"oscar",20,"gripa");
-        Paciente paciente6= new Paciente(7,"oscar",20,"gripa");
-        pacientes.setRaiz(new NodoPaciente(paciente1));
-        pacientes.insertar(paciente2);
-        pacientes.insertar(paciente3);
-        pacientes.insertar(paciente4);
-        pacientes.insertar(paciente5);
-        pacientes.insertar(paciente6);
-        try{
-            //guardarArchivo();
-            //pacientes=cargarArchivo();
-            pacientes.borrar(2);
-            System.out.println();
-        }catch (Exception e){
-
+        Scanner leer= new Scanner(System.in);
+        pacientes=cargarArchivo();
+        boolean ban = true;
+        System.out.println("Hospital");
+        while (ban){
+            System.out.println("1.Agregar nuevo Paciente");
+            System.out.println("2.Buscar un paciente");
+            System.out.println("3.Modificar el diagnostico");
+            System.out.println("4.Eliminar un registro");
+            System.out.println("5.Ver todos los pacientes");
+            System.out.println("6.Salir");
+            int opc=leer.nextInt();
+            try{
+                switch (opc){
+                    case 1->{//AGREGAR PACIENTE
+                        agregarPaciente();
+                    }
+                    case 2->{//BUSCAR UN PACIENTE
+                        System.out.println("El numID del paciente a buscar");
+                        pacientes.buscar(leer.nextInt());
+                    }
+                    case 3->{//MODIFICAR EL DIAGNOSTICO
+                        System.out.println("El numID del paciente a modificar");
+                        modificarRegistro(leer.nextInt());
+                    }
+                    case 4->{//ELIMINAR UN REGISTRO
+                        System.out.println("El numID del paciente a eliminar");
+                        pacientes.borrar(leer.nextInt());
+                    }
+                    case 5->{//VER TODOS OS PACIENTES
+                        pacientes.imprimirElementos();
+                    }
+                    case 6->{
+                        System.out.println("Saliendo");
+                        ban=false;
+                    }
+                }
+            }catch (Exception e){
+                System.out.println(e.getMessage());
+            }
         }
+        guardarArchivo();
     }
     public static void agregarPaciente(){
         //Metodo para agregar un paciente
