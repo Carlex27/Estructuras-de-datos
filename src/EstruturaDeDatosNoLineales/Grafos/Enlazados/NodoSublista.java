@@ -2,12 +2,28 @@ package EstruturaDeDatosNoLineales.Grafos.Enlazados;
 
 public class NodoSublista {
     private String nombre;
-    private int peso;
+
     private NodoSublista sig;
     public NodoSublista(String nombre){
         this.nombre=nombre;
         sig=null;
-        peso=0;
     }
 
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+
+
+    public NodoSublista getSig() {
+        return sig;
+    }
+
+    public void setSig(NodoSublista sig) {
+        this.sig = sig;
+    }
 }

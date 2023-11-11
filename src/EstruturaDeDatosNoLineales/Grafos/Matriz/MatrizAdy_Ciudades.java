@@ -1,17 +1,24 @@
 package EstruturaDeDatosNoLineales.Grafos.Matriz;
+
 import java.util.Scanner;
 
-import static java.lang.System.*;
+import static java.lang.System.in;
 
-public class MatrizAdyacencia {
-    int[][] tabla;
-    char[] nodos;
+public class MatrizAdy_Ciudades {
+    private int[][] tabla;
+    private String[] nodos;
 
-    public MatrizAdyacencia(int tam) {
+    public MatrizAdy_Ciudades(int tam) {
         tabla = new int[tam][tam];
-        nodos = new char[tam];
+        nodos = new String[tam];
         for (int i = 0; i < tam; i++)
-            nodos[i] = (char) (65 + i);
+            nodos[i] = leerNombres();
+    }
+
+    private String leerNombres() {
+        Scanner in = new Scanner(System.in);
+        System.out.println("Nombre del nodo");
+        return in.nextLine();
     }
 
     public void llenar(int tam) {
@@ -47,7 +54,21 @@ public class MatrizAdyacencia {
         } while (valor < 0 || valor > 1);
 
         return valor;
-
     }
-    
+
+    public int[][] getTabla() {
+        return tabla;
+    }
+
+    public void setTabla(int[][] tabla) {
+        this.tabla = tabla;
+    }
+
+    public String[] getNodos() {
+        return nodos;
+    }
+
+    public void setNodos(String[] nodos) {
+        this.nodos = nodos;
+    }
 }

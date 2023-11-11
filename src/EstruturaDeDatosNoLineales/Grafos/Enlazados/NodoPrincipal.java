@@ -12,4 +12,28 @@ public class NodoPrincipal {
         abajo=null;
     }
 
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public NodoSublista getProx() {
+        return prox;
+    }
+
+    public void setProx(NodoSublista prox) {
+        this.prox = prox;
+    }
+
+    public NodoPrincipal getAbajo() {
+        return abajo;
+    }
+
+    public void setAbajo(NodoPrincipal abajo) {
+        this.abajo = abajo;
+    }
+
 }
