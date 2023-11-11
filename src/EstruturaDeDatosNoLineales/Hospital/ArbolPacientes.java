@@ -1,6 +1,11 @@
 package EstruturaDeDatosNoLineales.Hospital;
 
-public class ArbolPacientes {
+import EstruturaDeDatosNoLineales.Hospital.ListaEnlazada.Lista;
+
+import java.beans.PropertyEditorSupport;
+import java.io.Serializable;
+
+public class ArbolPacientes implements Serializable {
     private NodoPaciente raiz;
     public ArbolPacientes(){
         raiz=null;
@@ -27,14 +32,15 @@ public class ArbolPacientes {
         }
 
     }
-
+    //METODO QUE BUSCA UN ELEMENTO DENTRO DEL ARBOL
     private Paciente buscarArbol(NodoPaciente nodo, int numID)throws Exception {
-        if(nodo==null){
+        if(nodo==null){ //EN CASO DE NO ENCONTRAR EL ELEMENTO
             throw new Exception("No se encontro");
         }
-        if(nodo.getNumID()==numID){
+        if(nodo.getNumID()==numID){ //SI LO ENCUENTRA SE RETORNA EL OBJ PACIENTE
             return nodo.getPaciente();
         }
+        //RECURSIVIDAD
         if(numID< nodo.getNumID()){
             return buscarArbol(nodo.getNodoIzq(),numID);
         }else{
@@ -45,30 +51,31 @@ public class ArbolPacientes {
         this.raiz=eliminar(this.raiz,numID);
     }
 
+    //METODO PARA ELIMINAR UN ELEMENTO DEL ARBOL
     private NodoPaciente eliminar(NodoPaciente nodo, int numID) {
-        if (nodo==null){
+        if (nodo==null){//SI ES NODO ES NULO
             return nodo;
         }
         if(numID > nodo.getNumID()){
-            nodo.setNodoDerecho(this.eliminar(nodo.getNodoDerecho(),numID));
+            nodo.setNodoDerecho(eliminar(nodo.getNodoDerecho(),numID));
         }else if(numID < nodo.getNumID()){
-            nodo.setNodoIzq((this.eliminar(nodo.getNodoIzq(),numID)));
+            nodo.setNodoIzq((eliminar(nodo.getNodoIzq(),numID)));
         }else {
             if(nodo.getNodoDerecho()==null && nodo.getNodoIzq()==null){
                 nodo=null;
             }else if(nodo.getNodoDerecho()!=null){
-                nodo.setPaciente(this.sucesor(nodo));
-                nodo.setNumID(this.sucesorID(nodo));
-                nodo.setNodoDerecho(this.eliminar(nodo.getNodoDerecho(),nodo.getNumID()));
+                nodo.setPaciente(sucesor(nodo));
+                nodo.setNumID(sucesorID(nodo));
+                nodo.setNodoDerecho(eliminar(nodo.getNodoDerecho(),nodo.getNumID()));
             }else{
-                nodo.setPaciente(this.predecesor(nodo));
-                nodo.setNumID(this.predecesorID(nodo));
-                nodo.setNodoIzq(this.eliminar(nodo.getNodoIzq(), nodo.getNumID()));
+                nodo.setPaciente(predecesor(nodo));
+                nodo.setNumID(predecesorID(nodo));
+                nodo.setNodoIzq(eliminar(nodo.getNodoIzq(), nodo.getNumID()));
             }
         }
         return nodo;
     }
-
+    //METODO QUE RETORNA EL NUMID DEL PREDECESOR
     private int predecesorID(NodoPaciente nodo) {
         nodo = nodo.getNodoIzq();
         while (nodo.getNodoDerecho() != null) {
@@ -76,7 +83,7 @@ public class ArbolPacientes {
         }
         return nodo.getNumID();
     }
-
+    //METODO QUE REGRESA EL OBJ PACIENTE DEL PREDECESOR
     private Paciente predecesor(NodoPaciente nodo) {
         nodo = nodo.getNodoIzq();
         while (nodo.getNodoDerecho() != null) {
@@ -85,7 +92,7 @@ public class ArbolPacientes {
         return nodo.getPaciente();
     }
 
-
+    //METODO QUE REGRESA EL NUMID DEL SUCESOR
     private int sucesorID(NodoPaciente nodo) {
         nodo = nodo.getNodoDerecho();
         while (nodo.getNodoIzq() != null) {
@@ -93,7 +100,7 @@ public class ArbolPacientes {
         }
         return nodo.getNumID();
     }
-
+    //METODO QUE RETORNA EL OBJ PACIENTE DEL SUCESOR
     private Paciente sucesor(NodoPaciente nodo) {
         nodo = nodo.getNodoDerecho();
         while (nodo.getNodoIzq() != null) {
@@ -101,5 +108,30 @@ public class ArbolPacientes {
         }
         return nodo.getPaciente();
     }
+    //METODO PARA IMPRIMIR TODO EL ARBOL BINARIO
+    public void imprimirElementos(){
+        imprimirEnOrdenRec(raiz);
+    }
 
+    private void imprimirEnOrdenRec(NodoPaciente nodo) {
+        if(nodo!=null){
+            imprimirEnOrdenRec(nodo.getNodoIzq());
+            System.out.println(nodo.getPaciente().toStringLinea());
+            imprimirEnOrdenRec(nodo.getNodoDerecho());
+        }
+    }
+    //METODO QUE REGRESA UNA LISTA DE OBJETOS PACIENTES EN PREORDEN
+    public Lista preOrden(){
+        Lista lista = new Lista();
+        preOrdenALista(raiz,lista);
+        return lista;
+    }
+
+    private void preOrdenALista(NodoPaciente nodo, Lista lista) {
+        if(nodo!=null){
+            lista.insertarFinal(nodo.getPaciente());
+            preOrdenALista(nodo.getNodoIzq(),lista);
+            preOrdenALista(nodo.getNodoDerecho(),lista);
+        }
+    }
 }

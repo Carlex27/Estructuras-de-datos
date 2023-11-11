@@ -1,5 +1,12 @@
 package EstruturaDeDatosNoLineales.Hospital;
 
+import EstruturaDeDatosNoLineales.Hospital.ListaEnlazada.Lista;
+import EstruturaDeDatosNoLineales.Hospital.ListaEnlazada.Nodo;
+
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.Scanner;
 
 public class RegistroHospital {
@@ -9,11 +16,17 @@ public class RegistroHospital {
         Paciente paciente2= new Paciente(2,"juan",20,"gripa");
         Paciente paciente3= new Paciente(0,"angel",20,"gripa");
         Paciente paciente4= new Paciente(4,"oscar",20,"gripa");
+        Paciente paciente5= new Paciente(3,"oscar",20,"gripa");
+        Paciente paciente6= new Paciente(7,"oscar",20,"gripa");
         pacientes.setRaiz(new NodoPaciente(paciente1));
         pacientes.insertar(paciente2);
         pacientes.insertar(paciente3);
         pacientes.insertar(paciente4);
+        pacientes.insertar(paciente5);
+        pacientes.insertar(paciente6);
         try{
+            //guardarArchivo();
+            //pacientes=cargarArchivo();
             pacientes.borrar(2);
             System.out.println();
         }catch (Exception e){
@@ -85,4 +98,42 @@ public class RegistroHospital {
             System.out.println(paciente.toString());
         }while (ban);
     }
+    //METODO PARA GUARDAR A UN ARCHIVO
+    public static void guardarArchivo(){
+        try {
+            ObjectOutputStream salida = new ObjectOutputStream(new FileOutputStream("RegistroPaciente.txt"));
+            Lista lista=pacientes.preOrden();//SE OBTIENE UNA LISTA DEL ARBOL EN PREORDEN
+            salida.writeObject(lista);
+            salida.close();
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
+    //METODO QUE CARGA LOS DATOS DEL ARCHIVO BINARIO
+    public static ArbolPacientes cargarArchivo(){
+        try{
+            ObjectInputStream entrada = new ObjectInputStream(new FileInputStream("RegistroPaciente.txt"));
+            Lista lista;
+            lista=(Lista) entrada.readObject();
+            ArbolPacientes arbol=insertarPacientes(lista);//SE INSERTAN LOS ELEMENTOS DE LA LISTA EN EL ARBOL
+            entrada.close();
+            return arbol;
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+        return null;
+    }
+    //METODO QUE INSERTA LA LISTA EN EL ARBOL
+    private static ArbolPacientes insertarPacientes(Lista lista) {
+        Nodo recorre = lista.primero.getSig();
+        Paciente temp=(Paciente)lista.primero.getInfo();
+        ArbolPacientes arbol=new ArbolPacientes();
+        arbol.setRaiz(new NodoPaciente(temp));//SE SETEA DIRECTAMENTE LA RAIZ DEL ARBOL
+        while (recorre!=null){
+            arbol.insertar((Paciente)recorre.getInfo());
+            recorre=recorre.getSig();
+        }
+        return arbol;
+    }
+
 }

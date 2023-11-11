@@ -61,4 +61,11 @@ public class Paciente implements Serializable {
                 "\nEdad: " + edad +
                 "\nDiagnostico: " + diagnostico  ;
     }
+    public String toStringLinea() {
+        return "Paciente." +
+                " numID: " + numID +
+                " Nombre: " + nombre +
+                " Edad: " + edad +
+                " Diagnostico: " + diagnostico ;
+    }
 }
