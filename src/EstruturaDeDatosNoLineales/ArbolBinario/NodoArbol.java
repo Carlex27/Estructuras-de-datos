@@ -1,4 +1,4 @@
-package EstruturaDeDatosNoLineales;
+package EstruturaDeDatosNoLineales.ArbolBinario;
 
 import java.io.Serializable;
 
