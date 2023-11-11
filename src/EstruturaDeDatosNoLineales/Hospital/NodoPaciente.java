@@ -1,7 +1,5 @@
 package EstruturaDeDatosNoLineales.Hospital;
 
-import EstruturaDeDatosNoLineales.NodoArbol;
-
 import java.io.Serializable;
 
 public class NodoPaciente implements Serializable {

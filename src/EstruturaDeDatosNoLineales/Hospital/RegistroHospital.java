@@ -17,7 +17,7 @@ public class RegistroHospital {
             pacientes.borrar(2);
             System.out.println();
         }catch (Exception e){
-            
+
         }
     }
     public static void agregarPaciente(){
@@ -58,7 +58,7 @@ public class RegistroHospital {
             System.out.println("3.Diagnostico del paciente");
             System.out.println("4.Salir");
             int opc= leer.nextInt();
-            //Esocger entre las opciones
+            //Escoger entre las opciones
             switch (opc) {
                 case 1 -> {
                     System.out.println("Ingrese el nombre");
