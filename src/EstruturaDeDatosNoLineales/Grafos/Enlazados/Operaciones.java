@@ -23,7 +23,9 @@ public class Operaciones {
                 ultimo.setAbajo(nuevo);
                 ultimo = nuevo;
             }
+            leer.close();
         }
+        
     }
 
     public void imprimir() {
@@ -81,6 +83,7 @@ public class Operaciones {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
+        in.close();
         return nombre;
     }
     public char leerLetra() {
@@ -92,6 +95,7 @@ public class Operaciones {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
+        in.close();
         return letra;
     }
 }

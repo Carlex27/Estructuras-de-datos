@@ -62,7 +62,7 @@ public class HeapSort2 {
     public static void main(String args[])
     {
         int arr[] = { 12, 11, 13, 5, 6, 7 };
-        int N = arr.length;
+   
 
         // Function call
         HeapSort2 ob = new HeapSort2();

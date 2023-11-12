@@ -1,6 +1,6 @@
 package EstruturaDeDatosNoLineales.Grafos.Enlazados;
 
-import EstruturaDeDatosNoLineales.Hospital.NodoPaciente;
+
 
 public class NodoPrincipal {
     private String nombre;

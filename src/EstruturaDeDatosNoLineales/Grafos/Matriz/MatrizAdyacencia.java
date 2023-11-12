@@ -45,7 +45,7 @@ public class MatrizAdyacencia {
             if (valor < 0 || valor > 1)
                 System.out.println("Valor fuera de rango, teclea 1 ó 0");
         } while (valor < 0 || valor > 1);
-
+        lectura.close();
         return valor;
 
     }

@@ -18,6 +18,7 @@ public class MatrizAdy_Ciudades {
     private String leerNombres() {
         Scanner in = new Scanner(System.in);
         System.out.println("Nombre del nodo");
+        in.close();
         return in.nextLine();
     }
 
@@ -52,7 +53,7 @@ public class MatrizAdy_Ciudades {
             if (valor < 0 || valor > 1)
                 System.out.println("Valor fuera de rango, teclea 1 ó 0");
         } while (valor < 0 || valor > 1);
-
+        lectura.close();
         return valor;
     }
 

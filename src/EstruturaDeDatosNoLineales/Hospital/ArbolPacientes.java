@@ -2,7 +2,7 @@ package EstruturaDeDatosNoLineales.Hospital;
 
 import EstruturaDeDatosNoLineales.Hospital.ListaEnlazada.Lista;
 
-import java.beans.PropertyEditorSupport;
+
 import java.io.Serializable;
 
 public class ArbolPacientes implements Serializable {

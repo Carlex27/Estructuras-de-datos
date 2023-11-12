@@ -53,6 +53,7 @@ public class RegistroHospital {
                 System.out.println(e.getMessage());
             }
         }
+        leer.close();
         guardarArchivo();
     }
     public static void agregarPaciente(){
@@ -73,6 +74,7 @@ public class RegistroHospital {
         }catch (Exception e){
             System.out.println(e.getMessage());
         }
+        leer.close();
     }
     public static void  modificarRegistro(int numID){
         //Metodo que modifica el registro de un paciente
@@ -83,6 +85,8 @@ public class RegistroHospital {
         Paciente paciente=pacientes.buscar(numID);
         //Verifiica si el paciente es null
         if(paciente==null){
+            leerString.close();
+            leer.close();
             return; //Termina el metodo
         }
         System.out.println("Se va a modificar el registro de un paciente");
@@ -119,6 +123,8 @@ public class RegistroHospital {
             System.out.println("Nuevos datos del paciente");
             System.out.println(paciente.toString());
         }while (ban);
+        leer.close();
+        leerString.close();
     }
     //METODO PARA GUARDAR A UN ARCHIVO
     public static void guardarArchivo(){
