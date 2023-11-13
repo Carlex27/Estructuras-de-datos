@@ -1,8 +1,9 @@
 package EstruturaDeDatosNoLineales.HeapSort;
 
+import java.io.Serializable;
 import java.util.Scanner;
 
-public class HeapSort {
+public class HeapSort implements Serializable {
     private int[] arreglo;
     private int tamanio;
     public HeapSort(){
