@@ -11,6 +11,7 @@ import java.util.Scanner;
 
 public class RegistroHospital {
     static ArbolPacientes pacientes = new ArbolPacientes();
+    //METODO MAIN
     public static void main(String[] args) {
         Scanner leer= new Scanner(System.in);
         pacientes=cargarArchivo();

@@ -56,7 +56,7 @@ public class ArbolPacientes implements Serializable {
         if (nodo==null){//SI ES NODO ES NULO
             return nodo;
         }
-        if(numID > nodo.getNumID()){
+        if(numID > nodo.getNumID()){ 
             nodo.setNodoDerecho(eliminar(nodo.getNodoDerecho(),numID));
         }else if(numID < nodo.getNumID()){
             nodo.setNodoIzq((eliminar(nodo.getNodoIzq(),numID)));
@@ -126,7 +126,7 @@ public class ArbolPacientes implements Serializable {
         preOrdenALista(raiz,lista);
         return lista;
     }
-
+    //METODO QUE INSERTA LOS ELEMENTOS DEL ARBOL EN UNA LISTA
     private void preOrdenALista(NodoPaciente nodo, Lista lista) {
         if(nodo!=null){
             lista.insertarFinal(nodo.getPaciente());
@@ -134,4 +134,6 @@ public class ArbolPacientes implements Serializable {
             preOrdenALista(nodo.getNodoDerecho(),lista);
         }
     }
+    
+    
 }
