@@ -9,6 +9,7 @@ public class QuickSort {
             System.out.println(arreglo[i]);
         }        
     }
+    //Metodo que implementa el ordenamiento QuickSort
     public static void quickSort(int[] arreglo, int izquierda, int derecha) {
         if (izquierda < derecha) {
             int indiceParticion = particion(arreglo, izquierda, derecha);
@@ -16,7 +17,7 @@ public class QuickSort {
             quickSort(arreglo, indiceParticion + 1, derecha);
         }
     }
-
+    //Metodo que implementa la particion del arreglo
     public static int particion(int[] arreglo, int izquierda, int derecha) {
         int pivote = arreglo[derecha];
         int i = (izquierda - 1);
