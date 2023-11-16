@@ -1,4 +1,4 @@
-package MetodosOrdenamiento;
+package Mios;
 //Clase que implementa el metodo de ordenamiento QuickSort
 public class QuickSort {
     //Metodo main
