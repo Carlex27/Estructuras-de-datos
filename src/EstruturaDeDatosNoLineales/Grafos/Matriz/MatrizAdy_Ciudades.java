@@ -13,6 +13,7 @@ public class MatrizAdy_Ciudades {
         nodos = new String[tam];
         for (int i = 0; i < tam; i++)
             nodos[i] = leerNombres();
+
     }
 
     private String leerNombres() {
