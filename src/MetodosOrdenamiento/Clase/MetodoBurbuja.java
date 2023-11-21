@@ -1,4 +1,4 @@
-
+package MetodosOrdenamiento.Clase;
 import java.util.Random;
 import java.util.Scanner;
 import java.io.FileWriter;

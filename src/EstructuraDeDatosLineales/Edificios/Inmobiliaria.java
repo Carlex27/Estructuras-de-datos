@@ -1,7 +1,4 @@
 package EstructuraDeDatosLineales.Edificios;
-
-
-
 import EstructuraDeDatosLineales.Lista;
 import EstructuraDeDatosLineales.Nodo;
 import java.io.*;
