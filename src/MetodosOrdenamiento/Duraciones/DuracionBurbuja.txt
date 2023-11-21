@@ -1,0 +1,27 @@
+Tiempo que se tardó el programa en ejecutarse para 1000 elementos: 0.002 segundos
+
+Tiempo que se tardó el programa en ejecutarse para 1000 elementos: 0.003 segundos
+Tiempo que se tardó el programa en ejecutarse para 2000 elementos: 0.001 segundos
+Tiempo que se tardó el programa en ejecutarse para 1000 elementos: 0.003 segundos
+Tiempo que se tardó el programa en ejecutarse para 2000 elementos: 0.003 segundos
+Tiempo que se tardó el programa en ejecutarse para 1000 elementos: 0.004 segundos
+Tiempo que se tardó el programa en ejecutarse para 2000 elementos: 0.001 segundos
+Tiempo que se tardó el programa en ejecutarse para 1000 elementos: 0.003 segundos
+Tiempo que se tardó el programa en ejecutarse para 2000 elementos: 0.002 segundos
+Tiempo que se tardó el programa en ejecutarse para 1000 elementos: 0.003 segundos
+Tiempo que se tardó el programa en ejecutarse para 2000 elementos: 0.003 segundos
+Tiempo que se tardó el programa en ejecutarse para 1000 elementos: 0.004 segundos
+Tiempo que se tardó el programa en ejecutarse para 2000 elementos: 0.002 segundos
+Tiempo que se tardó el programa en ejecutarse para 1000 elementos: 0.003 segundos
+Tiempo que se tardó el programa en ejecutarse para 2000 elementos: 0.002 segundos
+Tiempo que se tardó el programa en ejecutarse para 1000 elementos: 0.004 segundos
+Tiempo que se tardó el programa en ejecutarse para 2000 elementos: 0.002 segundos
+Tiempo que se tardó el programa en ejecutarse para 1000 elementos: 0.004 segundos
+Tiempo que se tardó el programa en ejecutarse para 2000 elementos: 0.002 segundos
+Tiempo que se tardó el programa en ejecutarse para 1000 elementos: 0.004 segundos
+Tiempo que se tardó el programa en ejecutarse para 2000 elementos: 0.003 segundos
+Tiempo que se tardó el programa en ejecutarse para 1000 elementos: 0.004 segundos
+Tiempo que se tardó el programa en ejecutarse para 2000 elementos: 0.003 segundos
+Tiempo que se tardó el programa en ejecutarse para 3000 elementos: 0.004 segundos
+Tiempo que se tardó el programa en ejecutarse para 4000 elementos: 0.005 segundos
+Tiempo que se tardó el programa en ejecutarse para 5000 elementos: 0.008 segundos

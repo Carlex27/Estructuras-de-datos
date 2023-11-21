@@ -1,4 +1,4 @@
-package Mios;
+package MetodosOrdenamiento.Mios;
 //Clase que implementa el metodo de ordenamiento Radix
 public class Radix {
     //Metodo main

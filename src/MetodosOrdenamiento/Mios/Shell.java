@@ -1,4 +1,4 @@
-package Mios;
+package MetodosOrdenamiento.Mios;
 //Programa que utilizia el metodo de ordenamiento Shell
 public class Shell {
     //Metodo main

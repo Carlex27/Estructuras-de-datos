@@ -1,4 +1,4 @@
-package Mios;
+package MetodosOrdenamiento.Mios;
 
 public class Burbuja {
     //Clase que implementa el metodo de ordenamiento burbuja

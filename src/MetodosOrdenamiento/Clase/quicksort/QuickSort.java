@@ -1,4 +1,4 @@
-package quicksort;
+package MetodosOrdenamiento.Clase.quicksort;
 
 import java.util.Random;
 

@@ -1,4 +1,4 @@
-package metodoRadix;
+package MetodosOrdenamiento.Clase.metodoRadix;
 
 import java.util.Random;
 

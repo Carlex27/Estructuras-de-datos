@@ -1,4 +1,4 @@
-package metodoRadix;
+package MetodosOrdenamiento.Clase.metodoRadix;
 
 public class Elemento {
     int num;

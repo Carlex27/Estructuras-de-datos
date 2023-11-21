@@ -1,30 +1,50 @@
 
 import java.util.Random;
 import java.util.Scanner;
+import java.io.FileWriter;
 //Clase que contiene el metodo de ordenamiento burbuja
 public class MetodoBurbuja {
 
     static Scanner leer = new Scanner(System.in);
 
     public static void main(String[] args) {
+        int[] vector=new int[1000];
+        guardarDuracion(vector,vector.length);
+        vector=new int[2000];
+        guardarDuracion(vector, vector.length);
+        vector=new int[3000];
+        guardarDuracion(vector, vector.length);
+        vector=new int[4000];
+        guardarDuracion(vector, vector.length);
+        vector=new int[5000];
+        guardarDuracion(vector, vector.length);
+    }
+    public static void guardarDuracion(int[] vector,int tam){
         Long inicio = 0L;
         Long fin = 0L;
-        int[] vector;
-
-        
-        vector = GenerarAleatorio(5000);
+        vector=GenerarAleatorio(tam);
         inicio = System.currentTimeMillis();
         ordenarBurbuja(vector);
         fin = System.currentTimeMillis();
-        String duracion = "Tiempo que se tardó el programa en ejecutarse para 1000 elementos: " + ((float) (fin - inicio) / 1000) + " segundos";
+        String duracion = "Tiempo que se tardó el programa en ejecutarse para " +tam+ " elementos: " + ((double) (fin - inicio) / 1000) + " segundos";
         System.out.println(duracion);
+        guardarArchivo(duracion);
+    }
+    public static void guardarArchivo(String duracion){
+        try {
+            FileWriter archivo = new FileWriter("src/MetodosOrdenamiento/Duraciones/DuracionBurbuja.txt", true);
+            archivo.write(duracion + "\r\n");
+            archivo.close();
+        } catch (Exception e) {
+            System.out.println("Error al escribir");
+        }
     }
 
     public static int[] GenerarAleatorio(int tam) {
         Random numeroAzar = new Random();
         int[] v = new int[tam];
         for (int i = 0; i < tam; i++) {
-            v[i] = numeroAzar.nextInt(5000) + 1;
+            v[i] = numeroAzar.nextInt(tam) + 1;
         }
         return v;
     }
