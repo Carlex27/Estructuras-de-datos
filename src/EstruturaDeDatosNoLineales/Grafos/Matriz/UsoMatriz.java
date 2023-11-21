@@ -12,6 +12,7 @@ public class UsoMatriz {
         //matriz.llenar();
         MatrizAdy_Ciudades matriz = cargarArchivo();
         matriz.imprimir();
+        matriz.ruta();
         guardarArchivo(matriz);
     }
    

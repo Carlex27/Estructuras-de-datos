@@ -12,10 +12,10 @@ public class Radix {
         generar(vector);
         imprimir(vector);
         System.out.println("\n\nOrdenamiento Radix: ");
-        long inicio, fin;
+        long inicio, fin=0;
         inicio = System.currentTimeMillis();
         radix(vector);
-        fin = System.currentTimeMillis();
+        inicio = System.currentTimeMillis();
         System.out.println("\n Tiempo que se tardó el programa en ejecutarse: ");
         System.out.println(((float) (fin - inicio) / 1000) + " segundos");
     }
