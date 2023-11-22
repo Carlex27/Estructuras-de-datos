@@ -8,16 +8,13 @@ public class MetodoBurbuja {
     static Scanner leer = new Scanner(System.in);
 
     public static void main(String[] args) {
-        int[] vector=new int[1000];
-        guardarDuracion(vector,vector.length);
-        vector=new int[2000];
+        int[] vector=new int[2000];
         guardarDuracion(vector, vector.length);
         vector=new int[3000];
         guardarDuracion(vector, vector.length);
         vector=new int[4000];
         guardarDuracion(vector, vector.length);
-        vector=new int[5000];
-        guardarDuracion(vector, vector.length);
+
     }
     public static void guardarDuracion(int[] vector,int tam){
         Long inicio = 0L;

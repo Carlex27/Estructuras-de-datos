@@ -1,23 +1,39 @@
 package MetodosOrdenamiento.Clase.metodoRadix;
 
+import java.io.FileWriter;
 import java.util.Random;
 
 public class Radix {
 
 
     public static void main(String[] args) {
-
-        int[] vector = new int[500];
-        //int []vector={345,721,420,572,836,467,672,194,365,236,891,746,431,834,247,529,216,389};
-        generar(vector);
-        imprimir(vector);
-        System.out.println("\n\nOrdenamiento Radix: ");
-        long inicio, fin=0;
+        System.out.println("\nOrdenamiento Radix: ");
+        int[] vector = new int[2000];
+        guardarDuracion(vector, vector.length);
+        vector = new int[3000];
+        guardarDuracion(vector, vector.length);
+        vector = new int[4000];
+        guardarDuracion(vector, vector.length);
+    }
+    public static void guardarDuracion(int[] vector,int tam){
+        Long inicio = 0L;
+        Long fin = 0L;
+        vector=genera(tam);
         inicio = System.currentTimeMillis();
         radix(vector);
-        inicio = System.currentTimeMillis();
-        System.out.println("\n Tiempo que se tardó el programa en ejecutarse: ");
-        System.out.println(((float) (fin - inicio) / 1000) + " segundos");
+        fin = System.currentTimeMillis();
+        String duracion = "Tiempo que se tardó el programa en ejecutarse para " +tam+ " elementos: " + ((double) (fin - inicio) / 1000) + " segundos";
+        System.out.println(duracion);
+        guardarArchivo(duracion);
+    }
+    public static void guardarArchivo(String duracion){
+        try {
+            FileWriter archivo = new FileWriter("src/MetodosOrdenamiento/Duraciones/DuracionRadix.txt", true);
+            archivo.write(duracion + "\r\n");
+            archivo.close();
+        } catch (Exception e) {
+            System.out.println("Error al escribir");
+        }
     }
 
     private static void radix(int[] vector) {
@@ -47,9 +63,7 @@ public class Radix {
                 }
 
             }
-            imprimirPrincipal(listaPrincipal);
             copiarAlVector(vector, listaPrincipal);
-            imprimir(vector);
             iniciaPrincipal(listaPrincipal);
         }
     }
@@ -97,12 +111,13 @@ public class Radix {
             System.out.print(num + ", ");
     }
 
-    private static void generar(int[] vector) {
+    private static int[] genera(int tam) {
         Random r = new Random();
-
+        int[] vector = new int[tam];
         for (int i = 0; i < vector.length; i++) {
-            vector[i] = r.nextInt(1000);
+            vector[i] = r.nextInt(vector.length)+1;
         }
+        return vector;
     }
 
 

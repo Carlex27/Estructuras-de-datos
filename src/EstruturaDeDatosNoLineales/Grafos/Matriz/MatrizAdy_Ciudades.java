@@ -54,6 +54,7 @@ public class MatrizAdy_Ciudades implements Serializable{
         System.out.println("Aeropuerto de destino: ");
         String destino = leer.nextLine();
         imprimirRuta(origen, destino);
+        leer.close();
     }
     public void imprimirRuta(String origen, String destino) {
         int origenIndice = EncontrarIndice(origen);
