@@ -1,53 +1,112 @@
 package Mezclas;
-
+import java.io.*;
 public class MezclaDirecta {
     public static void main(String[] args) {
-        int[] arreglo = { 5, 4, 3, 2, 1 };
-        System.out.println("Arreglo original:");
-        imprimirArreglo(arreglo);
-        mezclaDirecta(arreglo);
-        System.out.println("Arreglo ordenado:");
-        imprimirArreglo(arreglo);
+        String entrada = "ArrayDesordenado.txt";
+        String salida = "ArrayOrdenado.txt";
+        Long inicio, fin;
+        int[] arreglo = leerArchivo(entrada);
+        inicio = System.currentTimeMillis();
+        int[] arreglOrdenado = mezclaDirecta(arreglo);
+        fin = System.currentTimeMillis();
+        //int[] arreglOrdenado = generarArray(1000);
+        escribirArchivo(arreglOrdenado, salida);
+        guardarTiempo(inicio, fin);
     }
-    public static void mezclaDirecta(int[] arreglo) {
-        int n = arreglo.length;
-        int[] auxiliar = new int[n];
-        mezclaDirecta(arreglo, auxiliar, 0, n - 1);
-    }
-    private static void mezclaDirecta(int[] arreglo, int[] auxiliar, int izquierda, int derecha) {
-        if (izquierda < derecha) {
-            int centro = (izquierda + derecha) / 2;
-            mezclaDirecta(arreglo, auxiliar, izquierda, centro);
-            mezclaDirecta(arreglo, auxiliar, centro + 1, derecha);
-            mezcla(arreglo, auxiliar, izquierda, centro + 1, derecha);
-        }
-    }
-    private static void mezcla(int[] arreglo, int[] auxiliar, int izquierda, int derecha, int derechaFin) {
-        int izquierdaFin = derecha - 1;
-        int k = izquierda;
-        int num = derechaFin - izquierda + 1;
-        while (izquierda <= izquierdaFin && derecha <= derechaFin) {
-            if (arreglo[izquierda] <= arreglo[derecha]) {
-                auxiliar[k++] = arreglo[izquierda++];
-            } else {
-                auxiliar[k++] = arreglo[derecha++];
+    
+    public static int[] mezclaDirecta(int[] arreglo) {
+        int i,j,k;
+        if(arreglo.length>1){
+            //Partimos el arreglo en dos
+            int nElementosIzq=arreglo.length/2;
+            int nElementosDer=arreglo.length-nElementosIzq;
+            int arregloIzq[]=new int[nElementosIzq];
+            int arregloDer[]=new int[nElementosDer];
+            //Copiamos los elementos de la parte primera al arreglo izquierdo
+            for(i=0;i<nElementosIzq;i++){
+                arregloIzq[i]=arreglo[i];
             }
+            //Copiamos los elementos de la parte segunda al arreglo derecho
+            for(i=nElementosIzq;i<nElementosIzq+nElementosDer;i++){
+                arregloDer[i-nElementosIzq]=arreglo[i];
+            }
+            //Recursividad
+            arregloIzq=mezclaDirecta(arregloIzq);
+            arregloDer=mezclaDirecta(arregloDer);
+            i=0; j=0; k=0;
+            while(arregloIzq.length!=j && arregloDer.length!=k){
+                if(arregloIzq[j]<arregloDer[k]){
+                    arreglo[i]=arregloIzq[j];
+                    i++;
+                    j++;
+                }else{
+                    arreglo[i]=arregloDer[k];
+                    i++;
+                    k++;
+                }
+            }  
+            //Arreglo final
+            while(arregloIzq.length!=j){
+                arreglo[i]=arregloIzq[j];
+                i++;
+                j++;
+            }
+            while(arregloDer.length!=k){
+                arreglo[i]=arregloDer[k];
+                i++;
+                k++;
+            }
+            
         }
-        while (izquierda <= izquierdaFin) {
-            auxiliar[k++] = arreglo[izquierda++];
-        }
-        while (derecha <= derechaFin) {
-            auxiliar[k++] = arreglo[derecha++];
-        }
-        for (int i = 0; i < num; i++, derechaFin--) {
-            arreglo[derechaFin] = auxiliar[derechaFin];
+        return arreglo;
+    }
+    
+    public static int[] leerArchivo(String nombre) {
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader("src/Mezclas/Archivos/"+nombre));
+            String line = reader.readLine();
+            String[] numbers = line.split(" ");
+            int[] arreglo = new int[numbers.length];
+            for (int i = 0; i < numbers.length; i++) {
+                arreglo[i] = Integer.parseInt(numbers[i]);
+            }
+            reader.close();
+            return arreglo;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
         }
     }
-    public static void imprimirArreglo(int[] arreglo) {
-        for (int i = 0; i < arreglo.length; i++) {
-            System.out.print(arreglo[i] + " ");
+    
+    public static void escribirArchivo(int[] arreglo, String nombre) {
+        try {
+            BufferedWriter writer = new BufferedWriter(new FileWriter("src/Mezclas/Archivos/"+nombre));
+            for (int i = 0; i < arreglo.length; i++) {
+                writer.write(arreglo[i] + " ");
+            }
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        System.out.println();
+    }
+    public static int[] generarArray(int tam){
+        int[] arreglo = new int[tam];
+        for (int i = 0; i < tam; i++) {
+            arreglo[i] = (int) (Math.random() * 1000);
+        }
+        return arreglo;
+    }
+    public static void guardarTiempo(Long inicio, Long fin){
+        try {
+            BufferedWriter writer = new BufferedWriter(new FileWriter("src/Mezclas/Duracion/TiemposMezclaDirecta.txt", true));
+            writer.write("Tiempo de ejecucion: " + ((double) (fin - inicio) / 1000) + " segundos");
+            writer.newLine();
+            writer.close();
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
 }
+
+
