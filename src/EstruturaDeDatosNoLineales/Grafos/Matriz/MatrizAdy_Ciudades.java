@@ -1,5 +1,8 @@
 package EstruturaDeDatosNoLineales.Grafos.Matriz;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Scanner;
 
 import static java.lang.System.in;
@@ -47,6 +50,7 @@ public class MatrizAdy_Ciudades implements Serializable{
         }
         System.out.println();
     }
+
     public void ruta() {
         Scanner leer = new Scanner(System.in);
         System.out.println("Aeropuerto de origen: ");
@@ -56,6 +60,7 @@ public class MatrizAdy_Ciudades implements Serializable{
         imprimirRuta(origen, destino);
         leer.close();
     }
+
     public void imprimirRuta(String origen, String destino) {
         int origenIndice = EncontrarIndice(origen);
         int destinoIndice = EncontrarIndice(destino);
@@ -65,65 +70,70 @@ public class MatrizAdy_Ciudades implements Serializable{
             return;
         }
 
-        Elemento[][] dijkstra = new Elemento[this.tam][2];
+        // Implementar algoritmo de Dijkstra
+        int[] distancias = new int[this.tam];
+        int[] previos = new int[this.tam];
+        boolean[] visitados = new boolean[this.tam];
+
+        // Inicializar distancias y previos
         for (int i = 0; i < this.tam; i++) {
-            dijkstra[i][0] = new Elemento(Integer.MAX_VALUE, 0); // Inicializar distancias con valor infinito
-            dijkstra[i][1] = new Elemento();
+            distancias[i] = Integer.MAX_VALUE;
+            previos[i] = -1;
         }
+        distancias[origenIndice] = 0;
 
-        dijkstra[origenIndice][0].setDistancia(0); // Establecer distancia del origen a 0
-
-        // Implementar el algoritmo Dijkstra
         for (int i = 0; i < this.tam; i++) {
-            int nodoActual = obtenerNodoConMenorDistancia(dijkstra);
-            dijkstra[nodoActual][1].setVisitado(true);
-
-            // Actualizar las distancias de los nodos adyacentes no visitados
+            // Encontrar el nodo no visitado con la distancia más corta
+            int u = -1;
             for (int j = 0; j < this.tam; j++) {
-                if (!dijkstra[j][1].getVisitado() && tabla[nodoActual][j] == 1) {
-                    int distancia = dijkstra[nodoActual][0].getDistancia() + 1; // Considerar que cada conexión tiene una distancia de 1
-                    if (distancia < dijkstra[j][0].getDistancia()) {
-                        dijkstra[j][0].setDistancia(distancia);
-                        dijkstra[j][0].setAnterior(nodoActual);
-                    }
+                // Si no se ha visitado y (no se ha encontrado nodo o distancia más corta)
+                if (!visitados[j] && (u == -1 || distancias[j] < distancias[u])) {
+                    u = j;
+                }
+            }
+            // Si no se encontró un nodo no visitado, terminar
+            if (distancias[u] == Integer.MAX_VALUE) {
+                break; // Todos los nodos restantes son inalcanzables
+            }
+
+            visitados[u] = true;
+            // Actualizar distancias de los nodos adyacentes
+            for (int j = 0; j < this.tam; j++) {
+                // Si hay una conexión y no se ha visitado
+                int v = tabla[u][j];
+                if (v != 0 && distancias[u] + v < distancias[j]) {
+                    distancias[j] = distancias[u] + v;
+                    previos[j] = u;
                 }
             }
         }
-
-        // Imprimir la ruta desde el origen hasta el destino
-        int nodoActual = destinoIndice;
-        String ruta = nodos[nodoActual];
-        while (nodoActual != origenIndice) {
-            nodoActual = dijkstra[nodoActual][0].getAnterior();
-            ruta = nodos[nodoActual] + " -> " + ruta;
-        }
-
-        System.out.println("Ruta desde " + origen + " hasta " + destino + ": " + ruta);
-    }
-
-    private int obtenerNodoConMenorDistancia(Elemento[][] dijkstra) {
-        int minDistancia = Integer.MAX_VALUE;
-        int nodoMinDistancia = -1;
-        for (int i = 0; i < this.tam; i++) {
-            if (!dijkstra[i][1].getVisitado() && dijkstra[i][0].getDistancia() < minDistancia) {
-                minDistancia = dijkstra[i][0].getDistancia();
-                nodoMinDistancia = i;
+        // Imprimir la ruta
+        if (previos[destinoIndice] == -1) {
+            System.out.println("No hay ruta desde " + origen + " hasta " + destino);
+        } else {
+            // Construir la ruta
+            ArrayList<String> ruta = new ArrayList<>();
+            // Agregar el destino
+            for (int u = destinoIndice; u != -1; u = previos[u]) {
+                ruta.add(nodos[u]);
             }
+            // Imprimir la ruta
+            Collections.reverse(ruta);
+            System.out.println("Ruta desde " + origen + " hasta " + destino + ": " + String.join(" -> ", ruta));
         }
-        return nodoMinDistancia;
     }
-    private int EncontrarIndice(String nombre){
-        int indice=0;
-        for(int i=0;i<this.tam;i++){
-            if(nodos[i].equalsIgnoreCase(nombre)){
-                indice=i;
+
+    private int EncontrarIndice(String nombre) {
+        int indice = 0;
+        for (int i = 0; i < this.tam; i++) {
+            if (nodos[i].equalsIgnoreCase(nombre)) {
+                indice = i;
                 break;
             }
         }
         return indice;
     }
     
-
     private int entrada() {
         Scanner lectura = new Scanner(in);
         int valor;
