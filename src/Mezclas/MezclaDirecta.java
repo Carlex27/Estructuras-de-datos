@@ -1,112 +1,132 @@
 package Mezclas;
 import java.io.*;
+import java.util.Scanner;
+
+//Clase que contiene el metodo de ordenamiento mezcla directa
 public class MezclaDirecta {
     public static void main(String[] args) {
-        String entrada = "ArrayDesordenado.txt";
-        String salida = "ArrayOrdenado.txt";
-        Long inicio, fin;
-        int[] arreglo = leerArchivo(entrada);
-        inicio = System.currentTimeMillis();
-        int[] arreglOrdenado = mezclaDirecta(arreglo);
-        fin = System.currentTimeMillis();
-        //int[] arreglOrdenado = generarArray(1000);
-        escribirArchivo(arreglOrdenado, salida);
-        guardarTiempo(inicio, fin);
+        try {
+            File archivo = new File("src/Mezclas/Archivos/Original1.txt");
+            mezclaDirecta(archivo,1000);
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+        }
     }
-    
-    public static int[] mezclaDirecta(int[] arreglo) {
-        int i,j,k;
-        if(arreglo.length>1){
-            //Partimos el arreglo en dos
-            int nElementosIzq=arreglo.length/2;
-            int nElementosDer=arreglo.length-nElementosIzq;
-            int arregloIzq[]=new int[nElementosIzq];
-            int arregloDer[]=new int[nElementosDer];
-            //Copiamos los elementos de la parte primera al arreglo izquierdo
-            for(i=0;i<nElementosIzq;i++){
-                arregloIzq[i]=arreglo[i];
-            }
-            //Copiamos los elementos de la parte segunda al arreglo derecho
-            for(i=nElementosIzq;i<nElementosIzq+nElementosDer;i++){
-                arregloDer[i-nElementosIzq]=arreglo[i];
-            }
-            //Recursividad
-            arregloIzq=mezclaDirecta(arregloIzq);
-            arregloDer=mezclaDirecta(arregloDer);
-            i=0; j=0; k=0;
-            while(arregloIzq.length!=j && arregloDer.length!=k){
-                if(arregloIzq[j]<arregloDer[k]){
-                    arreglo[i]=arregloIzq[j];
-                    i++;
-                    j++;
-                }else{
-                    arreglo[i]=arregloDer[k];
-                    i++;
+    public static void mezclaDirecta(File archivo,int N){
+        File aux1 = new File("src/Mezclas/Archivos/Archivo1.txt");
+        File aux2 = new File("src/Mezclas/Archivos/Archivo2.txt");
+        int PARTICION = 1;
+        while(PARTICION < N ){
+            divide(archivo, aux1, aux2, PARTICION);
+            mezclar(archivo, aux1, aux2, PARTICION);
+            PARTICION *=2;
+        }
+    }
+    private static void divide(File archivo,File aux1,File aux2,int PARTICION){
+        try{
+            Scanner entrada = new Scanner(archivo);
+            PrintStream F1 = new PrintStream(aux1);
+            PrintStream F2 = new PrintStream(aux2);
+            while (entrada.hasNextInt()) {
+                int k=0;
+                while((k<PARTICION) && entrada.hasNextInt()){
+                    int NUM = entrada.nextInt();
+                    F1.println(NUM);
                     k++;
                 }
-            }  
-            //Arreglo final
-            while(arregloIzq.length!=j){
-                arreglo[i]=arregloIzq[j];
-                i++;
-                j++;
+                int L=0;
+                while(L<PARTICION && entrada.hasNextInt()){
+                    int NUM = entrada.nextInt();
+                    F2.println(NUM);
+                    L++;
+                }
             }
-            while(arregloDer.length!=k){
-                arreglo[i]=arregloDer[k];
-                i++;
-                k++;
-            }
-            
+            entrada.close();
+            F1.close();
+            F2.close();
+        }catch(Exception e){
+            System.out.println("Error: " + e.getMessage());
         }
-        return arreglo;
     }
-    
-    public static int[] leerArchivo(String nombre) {
+    private static void mezclar(File archivo, File aux1, File aux2, int PARTICION) {
         try {
-            BufferedReader reader = new BufferedReader(new FileReader("src/Mezclas/Archivos/"+nombre));
-            String line = reader.readLine();
-            String[] numbers = line.split(" ");
-            int[] arreglo = new int[numbers.length];
-            for (int i = 0; i < numbers.length; i++) {
-                arreglo[i] = Integer.parseInt(numbers[i]);
+            Scanner F1 = new Scanner(aux1);
+            Scanner F2 = new Scanner(aux2);
+            PrintStream salida = new PrintStream(archivo);
+            int NUM1 = 0;
+            int NUM2 = 0;
+            boolean B1 = true;
+            boolean B2 = true;
+            if (F1.hasNextInt()) {
+                NUM1 = F1.nextInt();
+                B1 = false;
             }
-            reader.close();
-            return arreglo;
-        } catch (IOException e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
-    
-    public static void escribirArchivo(int[] arreglo, String nombre) {
-        try {
-            BufferedWriter writer = new BufferedWriter(new FileWriter("src/Mezclas/Archivos/"+nombre));
-            for (int i = 0; i < arreglo.length; i++) {
-                writer.write(arreglo[i] + " ");
+            if (F2.hasNextInt()) {
+                NUM2 = F2.nextInt();
+                B2 = false;
             }
-            writer.close();
-        } catch (IOException e) {
-            e.printStackTrace();
+            while ((F1.hasNextInt() || !B1) && (F2.hasNextInt() || !B2)) {
+                int K = 0;
+                int L = 0;
+                while ((K < PARTICION && !B1) && (L < PARTICION && !B2)) {
+                    if (NUM1 <= NUM2) {
+                        salida.println(NUM1);
+                        K++;
+                        if (F1.hasNextInt()) {
+                            NUM1 = F1.nextInt();
+                        } else {
+                            B1 = true;
+                        }
+                    } else {
+                        salida.println(NUM2);
+                        L++;
+                        if (F2.hasNextInt()) {
+                            NUM2 = F2.nextInt();
+                        } else {
+                            B2 = true;
+                        }
+                    }
+                }
+                while (K < PARTICION && !B1) {
+                    salida.println(NUM1);
+                    K++;
+                    if (F1.hasNextInt()) {
+                        NUM1 = F1.nextInt();
+                    } else {
+                        B1 = true;
+                    }
+                }
+                while (L < PARTICION && !B2) {
+                    salida.println(NUM2);
+                    L++;
+                    if (F2.hasNextInt()) {
+                        NUM2 = F2.nextInt();
+                    } else {
+                        B2 = true;
+                    }
+                }
+            }
+            while (F1.hasNextInt() || !B1) {
+                salida.println(NUM1);
+                if (F1.hasNextInt()) {
+                    NUM1 = F1.nextInt();
+                } else {
+                    B1 = true;
+                }
+            }
+            while (F2.hasNextInt() || !B2) {
+                salida.println(NUM2);
+                if (F2.hasNextInt()) {
+                    NUM2 = F2.nextInt();
+                } else {
+                    B2 = true;
+                }
+            }
+            F1.close();
+            F2.close();
+            salida.close();
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
         }
     }
-    public static int[] generarArray(int tam){
-        int[] arreglo = new int[tam];
-        for (int i = 0; i < tam; i++) {
-            arreglo[i] = (int) (Math.random() * 1000);
-        }
-        return arreglo;
-    }
-    public static void guardarTiempo(Long inicio, Long fin){
-        try {
-            BufferedWriter writer = new BufferedWriter(new FileWriter("src/Mezclas/Duracion/TiemposMezclaDirecta.txt", true));
-            writer.write("Tiempo de ejecucion: " + ((double) (fin - inicio) / 1000) + " segundos");
-            writer.newLine();
-            writer.close();
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-        }
-    }
-
 }
-
-
