@@ -1,12 +1,14 @@
 package TablaHash.Hotel;
 
+import java.sql.Date;
+
 public class Reserva {
     private int id;
     private String nombre; 
-    String fechaLlegada;
-    String fechaSalida;
+    Date fechaLlegada;
+    Date fechaSalida;
     String tipoHabitacion;
-    public Reserva(int id, String nombre, String fechaLlegada, String fechaSalida, String tipoHabitacion) {
+    public Reserva(int id, String nombre, Date fechaLlegada, Date fechaSalida, String tipoHabitacion) {
         this.id = id;
         this.nombre = nombre;
         this.fechaLlegada = fechaLlegada;
@@ -16,8 +18,8 @@ public class Reserva {
     public Reserva() {
         this.id = 0;
         this.nombre = "";
-        this.fechaLlegada = "";
-        this.fechaSalida = "";
+        this.fechaLlegada = null;
+        this.fechaSalida = null;
         this.tipoHabitacion = "";
     }
     public int getId() {
@@ -26,10 +28,10 @@ public class Reserva {
     public String getNombre() {
         return nombre;
     }
-    public String getFechaLlegada() {
+    public Date getFechaLlegada() {
         return fechaLlegada;
     }
-    public String getFechaSalida() {
+    public Date getFechaSalida() {
         return fechaSalida;
     }
     public String getTipoHabitacion() {
@@ -41,10 +43,10 @@ public class Reserva {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-    public void setFechaLlegada(String fechaLlegada) {
+    public void setFechaLlegada(Date fechaLlegada) {
         this.fechaLlegada = fechaLlegada;
     }
-    public void setFechaSalida(String fechaSalida) {
+    public void setFechaSalida(Date fechaSalida) {
         this.fechaSalida = fechaSalida;
     }
     public void setTipoHabitacion(String tipoHabitacion) {
