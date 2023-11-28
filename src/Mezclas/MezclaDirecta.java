@@ -7,7 +7,11 @@ public class MezclaDirecta {
     public static void main(String[] args) {
         try {
             File archivo = new File("src/Mezclas/Archivos/Original1.txt");
+            Long inicio = System.currentTimeMillis();
             mezclaDirecta(archivo,1000);
+            long fin = System.currentTimeMillis();
+            String duracion = "Tiempo que se tardó el programa en ejecutarse para 1000 elementos: " + ((double) (fin - inicio) / 1000) + " segundos";
+            guardarArchivo(duracion);
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
         }
@@ -127,6 +131,15 @@ public class MezclaDirecta {
             salida.close();
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
+        }
+    }
+    public static void guardarArchivo(String duracion){
+        try {
+            FileWriter archivo = new FileWriter("src/Mezclas/Duracion/DuracionMezclaDirecta.txt", true);
+            archivo.write(duracion + "\n");
+            archivo.close();
+        } catch (Exception e) {
+            System.out.println("Error al escribir");
         }
     }
 }
