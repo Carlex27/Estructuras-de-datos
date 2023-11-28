@@ -72,10 +72,11 @@ public class Hotel implements Serializable{
         return disponible;
     }
     private Reserva crearReserva(){
-
+        //variables
         Reserva reserva = null;
         Scanner leer = new Scanner(System.in);
         Scanner leer2 = new Scanner(System.in);
+        //Leer datos
         System.out.println("Ingrese su nombre: ");
         String nombre = leer.nextLine();
         System.out.println("Ingrese su fecha de llegada: ");
@@ -84,14 +85,57 @@ public class Hotel implements Serializable{
         Date fechaSalida = Date.valueOf(leer2.nextLine());
         System.out.println("Ingrese el tipo de habitacion: ");
         String tipoHabitacion = leer.nextLine();
+        //Consultar disponibilidad
         if(consultarDisponibilidad(tipoHabitacion)){
+            //Crear ID
             int id = obtenerHash(nombre, fechaLlegada);
             System.out.println("Reserva exitosa");
+            actualizarDisponibilidad(tipoHabitacion, '-');
             reserva = new Reserva(id, nombre, fechaLlegada, fechaSalida, tipoHabitacion);
         }else{
             System.out.println("No hay habitaciones disponibles");
         }
-        
         return reserva;
+    }
+    public void actualizarDisponibilidad(String tipoHabitacion,char operacion){
+        tipoHabitacion = tipoHabitacion.toLowerCase();
+        if (operacion == '+') {
+            switch(tipoHabitacion){
+                case "suitegrand"->{
+                    suiteGrand++;
+                }
+                case "suiteejecutivas"->{
+                    suiteEjecutivas++;
+                } 
+                case "triples"->{
+                    triples++;
+                }
+                case "dobles"->{
+                    dobles++;
+                }
+                case "sencillas"->{
+                    sencillas++;
+                }  
+            }
+        }else {
+            switch(tipoHabitacion){
+                case "suitegrand"->{
+                    suiteGrand--;
+                }
+                case "suiteejecutivas"->{
+                    suiteEjecutivas--;
+                } 
+                case "triples"->{
+                    triples--;
+                }
+                case "dobles"->{
+                    dobles--;
+                }
+                case "sencillas"->{
+                    sencillas--;
+                }  
+            }
+        }
+        
     }
 }
