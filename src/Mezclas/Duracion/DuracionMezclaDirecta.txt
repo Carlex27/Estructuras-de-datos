@@ -1,0 +1,1 @@
+Tiempo que se tardó el programa en ejecutarse para 1000 elementos: 0.238 segundos
