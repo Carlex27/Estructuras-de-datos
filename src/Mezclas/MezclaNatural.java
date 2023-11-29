@@ -24,68 +24,71 @@ public class MezclaNatural {
                 boolean fin = false;
                 while (!fin) {
                     fin = true;
-                    try (Scanner input = new Scanner(archivo);
-                        PrintWriter output1 = new PrintWriter(aux1);
-                        PrintWriter output2 = new PrintWriter(aux2)) {
-
-                        if (input.hasNextInt()) {
-                            int prev = input.nextInt();
-                            output1.println(prev);
+                    Scanner entrada = new Scanner(archivo);
+                    PrintWriter arch1 = new PrintWriter(aux1);
+                    PrintWriter arch2 = new PrintWriter(aux2);
+                        if (entrada.hasNextInt()) {
+                            int previo = entrada.nextInt();
+                            arch1.println(previo);
                             boolean outputTo1 = true;
 
-                            while (input.hasNextInt()) {
-                                int current = input.nextInt();
-                                if (current < prev) {
+                            while (entrada.hasNextInt()) {
+                                int actual = entrada.nextInt();
+                                if (actual < previo) {
                                     outputTo1 = !outputTo1;
                                     fin = false;
                                 }
                                 if (outputTo1) {
-                                    output1.println(current);
+                                    arch1.println(actual);
                                 } else {
-                                    output2.println(current);
+                                    arch2.println(actual);
                                 }
-                                prev = current;
+                                previo = actual;
                             }
                         }
-                    }
+                        arch1.close();
+                        arch2.close();
+                        entrada.close();
 
-                    try (PrintWriter output = new PrintWriter(archivo);
-                        Scanner input1 = new Scanner(aux1);
-                        Scanner input2 = new Scanner(aux2)) {
+                    PrintWriter salida = new PrintWriter(archivo);
+                    Scanner Larch1 = new Scanner(aux1);
+                    Scanner Larch2 = new Scanner(aux2);
 
-                        if (input1.hasNextInt() && input2.hasNextInt()) {
-                            int num1 = input1.nextInt();
-                            int num2 = input2.nextInt();
+                        if (Larch1.hasNextInt() && Larch2.hasNextInt()) {
+                            int num1 = Larch1.nextInt();
+                            int num2 = Larch2.nextInt();
 
                             while (true) {
                                 if (num1 < num2) {
-                                    output.println(num1);
-                                    if (input1.hasNextInt()) {
-                                        num1 = input1.nextInt();
+                                    salida.println(num1);
+                                    if (Larch1.hasNextInt()) {
+                                        num1 = Larch1.nextInt();
                                     } else {
-                                        output.println(num2);
+                                        salida.println(num2);
                                         break;
                                     }
                                 } else {
-                                    output.println(num2);
-                                    if (input2.hasNextInt()) {
-                                        num2 = input2.nextInt();
+                                    salida.println(num2);
+                                    if (Larch2.hasNextInt()) {
+                                        num2 = Larch2.nextInt();
                                     } else {
-                                        output.println(num1);
+                                        salida.println(num1);
                                         break;
                                     }
                                 }
                             }
                         }
 
-                        while (input1.hasNextInt()) {
-                            output.println(input1.nextInt());
+                        while (Larch1.hasNextInt()) {
+                            salida.println(Larch1.nextInt());
                         }
 
-                        while (input2.hasNextInt()) {
-                            output.println(input2.nextInt());
+                        while (Larch2.hasNextInt()) {
+                            salida.println(Larch2.nextInt());
                         }
-                    }
+                        salida.close();
+                        Larch1.close();
+                        Larch2.close();
                 }
             } catch (IOException e) {
                 e.printStackTrace();

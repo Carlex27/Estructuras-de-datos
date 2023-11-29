@@ -135,7 +135,7 @@ public class MezclaDirecta {
     }
     public static void guardarArchivo(String duracion){
         try {
-            FileWriter archivo = new FileWriter("src/Mezclas/Duracion/DuracionMezclaDirecta.txt");
+            FileWriter archivo = new FileWriter("src/Mezclas/Duracion/DuracionMezclaDirecta.txt",true);
             archivo.write(duracion + "\n");
             archivo.close();
         } catch (Exception e) {
