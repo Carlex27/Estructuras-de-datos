@@ -6,12 +6,10 @@ public class TablaHash {
     public TablaHash() {
         
     }
-    private int hash(String nombre, Date fechallegada) {
+    public int hash(String nombre, Date fechallegada) {
         int id = 0;
+        id= nombre.charAt(0)+nombre.charAt(1)+nombre.charAt(2);
         
-
         return 0;
-
-       
     }
 }

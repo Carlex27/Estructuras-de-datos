@@ -2,7 +2,6 @@ package EstruturaDeDatosNoLineales.Grafos.Matriz;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 import java.util.Scanner;
 
 import static java.lang.System.in;
@@ -20,7 +19,6 @@ public class MatrizAdy_Ciudades implements Serializable{
         this.tam = tam;
         for (int i = 0; i < tam; i++)
             nodos[i] = leerNombres();
-
     }
 
     private String leerNombres() {
@@ -61,7 +59,7 @@ public class MatrizAdy_Ciudades implements Serializable{
         leer.close();
     }
 
-    public void imprimirRuta(String origen, String destino) {
+    private void imprimirRuta(String origen, String destino) {
         int origenIndice = EncontrarIndice(origen);
         int destinoIndice = EncontrarIndice(destino);
 
@@ -80,8 +78,9 @@ public class MatrizAdy_Ciudades implements Serializable{
             distancias[i] = Integer.MAX_VALUE;
             previos[i] = -1;
         }
+        
         distancias[origenIndice] = 0;
-
+        
         for (int i = 0; i < this.tam; i++) {
             // Encontrar el nodo no visitado con la distancia más corta
             int u = -1;
