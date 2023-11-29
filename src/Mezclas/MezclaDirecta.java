@@ -61,6 +61,7 @@ public class MezclaDirecta {
             int NUM2 = 0;
             boolean B1 = true;
             boolean B2 = true;
+            //Se lee el primer numero de cada archivo
             if (F1.hasNextInt()) {
                 NUM1 = F1.nextInt();
                 B1 = false;
@@ -69,6 +70,7 @@ public class MezclaDirecta {
                 NUM2 = F2.nextInt();
                 B2 = false;
             }
+            //Se comparan los numeros de los archivos y se escriben en el archivo original
             while ((F1.hasNextInt() || !B1) && (F2.hasNextInt() || !B2)) {
                 int K = 0;
                 int L = 0;
@@ -91,6 +93,7 @@ public class MezclaDirecta {
                         }
                     }
                 }
+                //Se escriben los numeros que quedaron en el archivo 1
                 while (K < PARTICION && !B1) {
                     salida.println(NUM1);
                     K++;
@@ -100,6 +103,7 @@ public class MezclaDirecta {
                         B1 = true;
                     }
                 }
+                //Se escriben los numeros que quedaron en el archivo 1
                 while (L < PARTICION && !B2) {
                     salida.println(NUM2);
                     L++;
@@ -110,6 +114,8 @@ public class MezclaDirecta {
                     }
                 }
             }
+            //NO SE PUDIERON COMPARAR
+            //Se guardan los elementos restantes del archivo1
             while (F1.hasNextInt() || !B1) {
                 salida.println(NUM1);
                 if (F1.hasNextInt()) {
@@ -118,6 +124,7 @@ public class MezclaDirecta {
                     B1 = true;
                 }
             }
+            //Se guardan los elementos restantes del arcchivo2
             while (F2.hasNextInt() || !B2) {
                 salida.println(NUM2);
                 if (F2.hasNextInt()) {

@@ -60,14 +60,17 @@ public class ArbolPacientes implements Serializable {
             nodo.setNodoDerecho(eliminar(nodo.getNodoDerecho(),numID));
         }else if(numID < nodo.getNumID()){
             nodo.setNodoIzq((eliminar(nodo.getNodoIzq(),numID)));
-        }else {
+        }else { //SI EL NUMID ES IGUAL AL NUMID DEL NODO
+            //SI EL NODO NO TIENE HIJOS
             if(nodo.getNodoDerecho()==null && nodo.getNodoIzq()==null){
                 nodo=null;
             }else if(nodo.getNodoDerecho()!=null){
+                //SI EL NODO TIENE UN HIJO DERECHO
                 nodo.setPaciente(sucesor(nodo));
                 nodo.setNumID(sucesorID(nodo));
                 nodo.setNodoDerecho(eliminar(nodo.getNodoDerecho(),nodo.getNumID()));
             }else{
+                //SI EL NODO TIENE UN HIJO IZQUIERDO O AMBOS
                 nodo.setPaciente(predecesor(nodo));
                 nodo.setNumID(predecesorID(nodo));
                 nodo.setNodoIzq(eliminar(nodo.getNodoIzq(), nodo.getNumID()));
