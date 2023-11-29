@@ -16,7 +16,7 @@ public class Hotel implements Serializable{
     public Hotel() {
 
     }
-    //metodos
+    //metodos hash
     private int obtenerHash(String nombre, Date fechallegada){
         int id = 0;
         
