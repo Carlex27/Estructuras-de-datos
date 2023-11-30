@@ -7,6 +7,7 @@ import java.io.Serializable;
 
 public class ArbolPacientes implements Serializable {
     private NodoPaciente raiz;
+    
     public ArbolPacientes(){
         raiz=null;
     }
