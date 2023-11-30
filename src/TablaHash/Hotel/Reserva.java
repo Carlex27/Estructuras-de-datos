@@ -22,6 +22,14 @@ public class Reserva {
         this.fechaSalida = null;
         this.tipoHabitacion = "";
     }
+    public void imprimir(){
+        System.out.println("ID: "+id);
+        System.out.println("Nombre: "+nombre);
+        System.out.println("Fecha de llegada: "+fechaLlegada);
+        System.out.println("Fecha de salida: "+fechaSalida);
+        System.out.println("Tipo de habitacion: "+tipoHabitacion);
+        System.out.println("---------------------------");
+    }
     public int getId() {
         return id;
     }
