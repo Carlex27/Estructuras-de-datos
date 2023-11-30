@@ -3,6 +3,7 @@ package TablaHash.Hotel;
 import java.io.Serializable;
 import java.sql.Date;
 import java.util.Scanner;
+import TablaHash.TablaHash;
 
 public class Hotel implements Serializable{
     int suiteGrand=2;
@@ -10,8 +11,7 @@ public class Hotel implements Serializable{
     int triples=20;
     int dobles=32;
     int sencillas=36;
-    
-    Reserva[] reservas= new Reserva[50];
+    TablaHash tablaHash = new TablaHash();
     //constructor
     public Hotel() {
 

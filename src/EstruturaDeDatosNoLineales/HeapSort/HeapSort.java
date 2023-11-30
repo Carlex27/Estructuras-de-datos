@@ -32,34 +32,33 @@ public class HeapSort implements Serializable {
     }
     //Metodo para ordenar el vector
     private void ordenar() {
-       
         for (int i = tamanio - 1; i >= 0; i--) {
-            
+            // intercambiar
             int temp = arreglo[0];
             arreglo[0] = arreglo[i];
             arreglo[i] = temp;
-    
             heapDown(i, 0);
         }
     }
     
-    
+    //Metodo que comprueba si el hijo es mayor que el padre
     private void heapDown(int n, int i) {
         int max = i; 
-        int leftChild = 2 * i + 1;
-        int rightChild = 2 * i + 2;
-    
-        if (leftChild < n && arreglo[leftChild] > arreglo[max])
-            max = leftChild;
-    
-        if (rightChild < n && arreglo[rightChild] > arreglo[max])
-            max = rightChild;
-    
+        int hijoIzq = 2 * i + 1;
+        int hijoDer = 2 * i + 2;
+        //Si el hijo izquierdo es mayor que el padre
+        if (hijoIzq < n && arreglo[hijoIzq] > arreglo[max])
+            max = hijoIzq;
+        //Si el hijo derecho es mayor que el padre  
+        if (hijoDer < n && arreglo[hijoDer] > arreglo[max])
+            max = hijoDer;
+        //Si el hijo es mayor que el padre
         if (max != i) {
             // intercambiar
-            int swap = arreglo[i];
+            int cambio = arreglo[i];
             arreglo[i] = arreglo[max];
-            arreglo[max] = swap;
+            arreglo[max] = cambio;
+            // recursivo
             heapDown(n, max);
         }
     }
@@ -85,6 +84,7 @@ public class HeapSort implements Serializable {
     private void heapUp(int i) {
         int padre = (i - 1) / 2;
         int temp = arreglo[i];
+        //Si el padre es menor que el hijo
             while (i > 0 && arreglo[padre] < temp) {
                 arreglo[i] = arreglo[padre];
                 i = padre;
@@ -92,6 +92,7 @@ public class HeapSort implements Serializable {
             }
         arreglo[i] = temp;
     }
+    //Metodo que imprime el vector
     public void imprimir(){
         for (int i = 0; i < getTamanio(); i++) {
             System.out.print(arreglo[i]+" ");

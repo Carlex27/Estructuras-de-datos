@@ -20,13 +20,13 @@ public class MatrizAdy_Ciudades implements Serializable{
         for (int i = 0; i < tam; i++)
             nodos[i] = leerNombres();
     }
-
+    // Método para leer el nombre de los nodos
     private String leerNombres() {
         Scanner in = new Scanner(System.in);
         System.out.println("Nombre del nodo");
         return in.nextLine(); 
     }
-
+    // Método para llenar la matriz
     public void llenar() {
         for (int ren = 0; ren < this.tam; ren++) {
             System.out.println("Conexiones del nodo: " + nodos[ren]);
@@ -38,7 +38,7 @@ public class MatrizAdy_Ciudades implements Serializable{
         }
 
     }
-
+    // Método para imprimir la matriz
     public void imprimir() {
         for (int ren = 0; ren < this.tam; ren++) {
             System.out.print("\nEl Aeropuerto de " + nodos[ren] + " se conecta con: ");
@@ -48,7 +48,7 @@ public class MatrizAdy_Ciudades implements Serializable{
         }
         System.out.println();
     }
-
+    // Método para buscar la ruta más corta entre dos nodos
     public void ruta() {
         Scanner leer = new Scanner(System.in);
         System.out.println("Aeropuerto de origen: ");
@@ -58,7 +58,7 @@ public class MatrizAdy_Ciudades implements Serializable{
         imprimirRuta(origen, destino);
         leer.close();
     }
-
+    // Método para imprimir la ruta más corta entre dos nodos
     private void imprimirRuta(String origen, String destino) {
         int origenIndice = EncontrarIndice(origen);
         int destinoIndice = EncontrarIndice(destino);
@@ -121,7 +121,7 @@ public class MatrizAdy_Ciudades implements Serializable{
             System.out.println("Ruta desde " + origen + " hasta " + destino + ": " + String.join(" -> ", ruta));
         }
     }
-
+    // Busca el índice de un nodo por su nombre
     private int EncontrarIndice(String nombre) {
         int indice = 0;
         for (int i = 0; i < this.tam; i++) {
@@ -132,7 +132,7 @@ public class MatrizAdy_Ciudades implements Serializable{
         }
         return indice;
     }
-    
+    // Método para validar la entrada de datos
     private int entrada() {
         Scanner lectura = new Scanner(in);
         int valor;
@@ -143,7 +143,7 @@ public class MatrizAdy_Ciudades implements Serializable{
         } while (valor < 0 || valor > 1);
         return valor;
     }
-
+    //Setters y getters
     public int[][] getTabla() {
         return tabla;
     }
