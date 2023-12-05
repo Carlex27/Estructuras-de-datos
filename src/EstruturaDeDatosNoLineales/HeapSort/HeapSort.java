@@ -76,7 +76,6 @@ public class HeapSort implements Serializable {
                 heapUp(j);
                 j++;
             }
-        sc.close();
         setTamanio(j);
         ordenar();
     }

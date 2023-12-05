@@ -8,3 +8,4 @@ Tiempo que se tardó el programa en ejecutarse para 1000 elementos: 0.064 segund
 Tiempo que se tardó el programa en ejecutarse para 1000 elementos: 0.285 segundos
 Tiempo que se tardó el programa en ejecutarse para 1000 elementos: 0.307 segundos
 Tiempo que se tardó el programa en ejecutarse para 1000 elementos: 0.265 segundos
+Tiempo que se tardó el programa en ejecutarse para 1000 elementos: 0.194 segundos

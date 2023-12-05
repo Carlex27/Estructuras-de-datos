@@ -54,28 +54,27 @@ public class RegistroHospital {
                 System.out.println(e.getMessage());
             }
         }
-        leer.close();
         guardarArchivo();
     }
     public static void agregarPaciente(){
         //Metodo para agregar un paciente
         Scanner leer = new Scanner(System.in);
+        Scanner leer2= new Scanner(System.in);
         try{
             System.out.println("Registra nuevo paciente");
             System.out.println("Numero de identificacion");
             int numID=leer.nextInt();
             System.out.println("Dime el nombre del paciente");
-            String nombre=leer.nextLine();
+            String nombre=leer2.nextLine();
             System.out.println("Edad del paciente");
             int edad= leer.nextInt();
             System.out.println("Dime el diagnostico del paciente");
-            String diagnostico=leer.nextLine();
+            String diagnostico=leer2.nextLine();
             //Agrega al arbol el nuevo objeto Paciente
             pacientes.insertar(new Paciente(numID,nombre,edad,diagnostico));
         }catch (Exception e){
             System.out.println(e.getMessage());
         }
-        leer.close();
     }
     public static void  modificarRegistro(int numID){
         //Metodo que modifica el registro de un paciente
@@ -124,8 +123,7 @@ public class RegistroHospital {
             System.out.println("Nuevos datos del paciente");
             System.out.println(paciente.toString());
         }while (ban);
-        leer.close();
-        leerString.close();
+
     }
     //METODO PARA GUARDAR A UN ARCHIVO
     public static void guardarArchivo(){

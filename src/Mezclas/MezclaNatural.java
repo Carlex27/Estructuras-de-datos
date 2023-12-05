@@ -30,15 +30,15 @@ public class MezclaNatural {
                         if (entrada.hasNextInt()) {
                             int previo = entrada.nextInt();
                             arch1.println(previo);
-                            boolean outputTo1 = true;
+                            boolean salida1 = true;
 
                             while (entrada.hasNextInt()) {
                                 int actual = entrada.nextInt();
                                 if (actual < previo) {
-                                    outputTo1 = !outputTo1;
+                                    salida1 = !salida1;
                                     fin = false;
                                 }
-                                if (outputTo1) {
+                                if (salida1) {
                                     arch1.println(actual);
                                 } else {
                                     arch2.println(actual);

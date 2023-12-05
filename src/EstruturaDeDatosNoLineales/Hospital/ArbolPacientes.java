@@ -119,8 +119,9 @@ public class ArbolPacientes implements Serializable {
 
     private void imprimirEnOrdenRec(NodoPaciente nodo) {
         if(nodo!=null){
-            imprimirEnOrdenRec(nodo.getNodoIzq());
+
             System.out.println(nodo.getPaciente().toStringLinea());
+            imprimirEnOrdenRec(nodo.getNodoIzq());
             imprimirEnOrdenRec(nodo.getNodoDerecho());
         }
     }
