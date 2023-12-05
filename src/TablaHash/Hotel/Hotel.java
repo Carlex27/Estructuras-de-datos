@@ -16,6 +16,7 @@ public class Hotel implements Serializable{
     public Hotel() {
         tablaHash = new TablaHash();
     }
+    //Metodo que consulta la disponibilidad de habitaciones
     public void consultarDisponibilidad(){
         Scanner leer = new Scanner(System.in);
         System.out.println("Ingrese el tipo de habitacion: ");
@@ -29,14 +30,16 @@ public class Hotel implements Serializable{
             System.out.println("Se coloco una fecha invalida");
             return;
         }
+
         boolean disponible = consultarDisponibilidad(tipoHabitacion);
+
         if(disponible){
             System.out.println("Hay habitaciones disponibles");
         }else{
             System.out.println("No hay habitaciones disponibles");
         }
     }
-
+    //Metodo que reserva una habitacion
     public void reservar(){
         Reserva reserva = crearReserva();
         if(reserva!=null){
@@ -54,7 +57,6 @@ public class Hotel implements Serializable{
         System.out.println("Ingrese su nombre: ");
         String nombre = leer.nextLine();
         try{
-
             System.out.println("Formato de fecha: yyyy-mm-dd");
             System.out.println("Ingrese su fecha de llegada: ");
             Date fechaLlegada = Date.valueOf(leer2.nextLine());
@@ -62,6 +64,7 @@ public class Hotel implements Serializable{
             Date fechaSalida = Date.valueOf(leer2.nextLine());
 
             System.out.println("Ingrese el tipo de habitacion: ");
+            mostrarHabitaciones();
             String tipoHabitacion = leer.nextLine();
 
             //Consultar disponibilidad
@@ -80,17 +83,39 @@ public class Hotel implements Serializable{
             System.out.println("Se coloco una fecha invalida");
             reserva=null;
         }
-        leer.close();
-        leer2.close();
         return reserva;
     }
-    public void cancelar(){
+    //Buscar Reserva
+    public void buscarReserva(){
         Scanner leer = new Scanner (System.in);
+        Scanner leer2 = new Scanner (System.in);
+        System.out.println("Buscando reserva");
         System.out.println("Ingrese el nombre de la persona que hizo la reserva: ");
         String nombre = leer.nextLine();
         try {
             System.out.println("Ingrese la fecha de llegada. Formato: yyyy-mm-dd");
-            Date fechaLlegada = Date.valueOf(leer.nextLine());
+            Date fechaLlegada = Date.valueOf(leer2.nextLine());
+            int id = tablaHash.asignarID(nombre, fechaLlegada);
+            if(tablaHash.getReservas()[id]!=null){
+                Reserva reserva = tablaHash.getReservas()[id];
+                reserva.imprimir();
+            }else{ 
+                System.out.println("No se encontro la reserva");
+            }
+        } catch (Exception e) {
+            System.out.println("Se coloco una fecha invalida");
+        }
+    }
+    //cancelar reserva
+    public void cancelar(){
+        Scanner leer = new Scanner (System.in);
+        Scanner leer2 = new Scanner (System.in);
+        System.out.println("Cancelando reserva");
+        System.out.println("Ingrese el nombre de la persona que hizo la reserva: ");
+        String nombre = leer.nextLine();
+        try {
+            System.out.println("Ingrese la fecha de llegada. Formato: yyyy-mm-dd");
+            Date fechaLlegada = Date.valueOf(leer2.nextLine());
             int id = tablaHash.asignarID(nombre, fechaLlegada);
             if(tablaHash.getReservas()[id]!=null){
                 Reserva reserva = tablaHash.getReservas()[id];
@@ -117,9 +142,18 @@ public class Hotel implements Serializable{
             System.out.println("No hay reservas");
         }
     }
-    
+    //mostrar habitaciones
+    private void mostrarHabitaciones(){
+        System.out.println("Suite Grand: "+suiteGrand);
+        System.out.println("Suite Ejecutivas: "+suiteEjecutivas);
+        System.out.println("Triples: "+triples);
+        System.out.println("Dobles: "+dobles);
+        System.out.println("Sencillas: "+sencillas);
+    }
+    //actualizar disponibilidad
     private void actualizarDisponibilidad(String tipoHabitacion,char operacion){
         tipoHabitacion = tipoHabitacion.toLowerCase();
+        tipoHabitacion=tipoHabitacion.replace(" ", "");
         if (operacion == '+') {
             switch(tipoHabitacion){
                 case "suitegrand"->{
@@ -163,6 +197,7 @@ public class Hotel implements Serializable{
     private boolean consultarDisponibilidad(String tipoHabitacion){
         boolean disponible = false;
         tipoHabitacion = tipoHabitacion.toLowerCase();
+        tipoHabitacion=tipoHabitacion.replace(" ", "");
         switch(tipoHabitacion){
             case "suitegrand"->{
                 if(suiteGrand>0){

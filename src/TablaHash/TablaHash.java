@@ -12,6 +12,8 @@ public class TablaHash implements Serializable {
         
     }
     public int asignarID(String nombre, Date fechallegada) {
+        Long inicio = System.currentTimeMillis();
+        nombre=nombre.toLowerCase();
         int id = 0;
         for(int i = 0; i < nombre.length(); i++){
             id += nombre.charAt(i);
@@ -27,11 +29,35 @@ public class TablaHash implements Serializable {
 
         //Se obtiene el modulo del id con el tamaño de la tabla
         id = id % TAM_TABLA;
-        if(reservas[id] != null){
-            //Si la posicion de la tabla ya esta ocupada, se busca la siguiente posicion disponible
-            id=segundoHash(id);
-        }
+        id = verificarID(id, nombre, fechallegada);
+        Long fin = System.currentTimeMillis();
+        String tiempo = "Tiempo en asignar ID: "+(fin-inicio)+" milisegundos";
+        guardarTiempo(tiempo);
         return id;
+    }
+    //Verificar si el id esta ocupado
+    private int verificarID(int id, String nombre, Date fechallegada){
+        if(reservas[id] != null){
+            String nombre2 = reservas[id].getNombre();
+            nombre2 = nombre2.toLowerCase();
+            if (nombre.equals(nombre2)) {
+                return id;
+            }else{
+                id = segundoHash(id);
+            }
+        }
+       
+        return id;
+    }
+
+    private void guardarTiempo(String tiempo){
+        try{
+            java.io.FileWriter fw = new java.io.FileWriter("src/TablaHash/Binarios/tiempos.txt", true);
+            fw.write(tiempo+"\n");
+            fw.close();
+        }catch(Exception e){
+            System.out.println("Error al guardar el tiempo");
+        }
     }
     public int segundoHash(int id){
         int i = 0;
