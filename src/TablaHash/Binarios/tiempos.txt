@@ -6,3 +6,4 @@ Tiempo en asignar ID: 16 milisegundos
 Tiempo en asignar ID: 17 milisegundos
 Tiempo en asignar ID: 16 milisegundos
 Tiempo en asignar ID: 17 milisegundos
+Tiempo en asignar ID: 19 milisegundos
