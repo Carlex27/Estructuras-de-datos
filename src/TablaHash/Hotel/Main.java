@@ -9,7 +9,7 @@ import java.util.Scanner;
 public class Main {
     static Hotel hotel = new Hotel();
     public static void main(String[] args) {
-        hotel=cargarArchivo();
+        //hotel=cargarArchivo();
         menu();
         guardarArchivo(hotel);
     }
