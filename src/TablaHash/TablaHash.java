@@ -64,10 +64,11 @@ public class TablaHash implements Serializable {
     public int segundoHash(int id,String nombre){
         int i = 0;
         while(reservas[id] != null){
-            String nombre2 = reservas[id].getNombre();
-            nombre2 = nombre2.toLowerCase();
             id = (id + i*i) % TAM_TABLA;
             i++;
+            String nombre2 = reservas[id].getNombre();
+            nombre2 = nombre2.toLowerCase();
+            nombre2=nombre2.replace(" ","");
             if (nombre.equals(nombre2)) {
                 return id;
             }
