@@ -4,6 +4,7 @@ import java.io.ObjectOutputStream;
 import java.io.FileOutputStream;    
 import java.io.ObjectInputStream;
 import java.io.FileInputStream;
+import java.security.spec.ECField;
 import java.util.Scanner;
 
 public class Main {
@@ -16,6 +17,8 @@ public class Main {
     public static void menu(){
         Scanner leer = new Scanner(System.in);
         boolean ban = true;
+        int opcion=0;
+        System.out.println("SISTEMA DE RESERVA DEL HOTEL");
         do{
             System.out.println("1. Reservar");
             System.out.println("2. Consultar disponibilidad");
@@ -24,7 +27,11 @@ public class Main {
             System.out.println("5. Imprimir reservas");
             System.out.println("6. Guardar archivo");
             System.out.println("7. Salir");
-            int opcion = leer.nextInt();
+            try{
+                opcion = leer.nextInt();
+            }catch (Exception e){
+                System.out.println(e.getMessage());
+            }
             switch (opcion) {
                 case 1://RESERVAR
                     hotel.reservar();

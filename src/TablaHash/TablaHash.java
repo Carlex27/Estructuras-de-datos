@@ -14,6 +14,7 @@ public class TablaHash implements Serializable {
     public int asignarID(String nombre, Date fechallegada) {
         Long inicio = System.currentTimeMillis();
         nombre=nombre.toLowerCase();
+        nombre=nombre.replace(" ","");
         int id = 0;
         for(int i = 0; i < nombre.length(); i++){
             id += nombre.charAt(i);
@@ -40,10 +41,11 @@ public class TablaHash implements Serializable {
         if(reservas[id] != null){
             String nombre2 = reservas[id].getNombre();
             nombre2 = nombre2.toLowerCase();
+            nombre2=nombre2.replace(" ","");
             if (nombre.equals(nombre2)) {
                 return id;
             }else{
-                id = segundoHash(id);
+                id = segundoHash(id,nombre);
             }
         }
        
@@ -59,11 +61,17 @@ public class TablaHash implements Serializable {
             System.out.println("Error al guardar el tiempo");
         }
     }
-    public int segundoHash(int id){
+    public int segundoHash(int id,String nombre){
         int i = 0;
         while(reservas[id] != null){
             id = (id + i*i) % TAM_TABLA;
             i++;
+            String nombre2 = reservas[id].getNombre();
+            nombre2 = nombre2.toLowerCase();
+            nombre2=nombre2.replace(" ","");
+            if (nombre.equals(nombre2)) {
+                return id;
+            }
         }
         return id;
     }
