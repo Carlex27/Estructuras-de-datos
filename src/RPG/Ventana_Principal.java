@@ -69,7 +69,10 @@ public class Ventana_Principal {
         ventana.repaint();
       }
       private void tienda(){
-        
+        Tienda tienda = new Tienda(this);
+        tienda.comenzarTienda();
+        principal.add(superior, BorderLayout.NORTH);
+        ventana.repaint();
       }
       private void modificarFuentes(){
         Font fuente = new Font("Arial", Font.BOLD, 16);
