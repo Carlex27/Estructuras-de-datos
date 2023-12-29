@@ -17,7 +17,7 @@ public class Personaje extends Entidad{
     }
     public void subirNivel(){
         nivel++;
-        exp = 0;
+        exp = exp - exp_Necesaria;
         exp_Necesaria += 10;
         setAtaque(getAtaque()+2);
         setDefensa(getDefensa()+1);

@@ -9,7 +9,7 @@ public class Ventana_Principal {
     
     private JLabel etNombre, etNivel, etEXP, etOro, atributos;
     private JLabel etImage;
-    private JButton botExplorar;
+    private JButton botExplorar, botTienda;
 
     private Personaje pj;
     public Ventana_Principal (Personaje pj){
@@ -25,10 +25,11 @@ public class Ventana_Principal {
         etNivel = new JLabel(" | Nivel: " + pj.getNivel());
         etEXP = new JLabel(" | EXP: " + pj.getExp() + "/" + pj.getExp_Necesaria());
         etOro = new JLabel(" | Oro: " + pj.getOro());
-        atributos = new JLabel(" | Atq: " + pj.getAtaque() + " | Def: " + pj.getDefensa() + " | Vida: " + pj.getVidaActual() + "/" + pj.getVidaMaxima()+ " | ");
+        atributos = new JLabel(" | Atq: " + pj.getAtaque() + " | Def: " + pj.getDefensa() + " | Vida: ");
         etImage = new JLabel();
 
         botExplorar = new JButton("Explorar");
+        botTienda = new JButton("Tienda");
       }
       public void comenzarJuego(){
         montarEscena();
@@ -50,16 +51,25 @@ public class Ventana_Principal {
 
         //PANEL INFERIOR CON BOTONES
         botExplorar.addActionListener(e->nuevaExploracion());
+        botTienda.addActionListener(e->tienda());
         inferior.add(botExplorar);
+        inferior.add(botTienda);
 
         //AÑADIMOS LOS PANELES A LA VENTANA
         principal.add(superior, BorderLayout.NORTH);
         principal.add(inferior, BorderLayout.SOUTH);
         ventana.add(principal);
+        ventana.setLocationRelativeTo(null);
 
       }
-      private Object nuevaExploracion() {
-        return null;
+      private void nuevaExploracion() {
+        Exploracion exploracion = new Exploracion(this);
+        exploracion.comenzarExploracion();
+        principal.add(superior, BorderLayout.NORTH);
+        ventana.repaint();
+      }
+      private void tienda(){
+        
       }
       private void modificarFuentes(){
         Font fuente = new Font("Arial", Font.BOLD, 16);
@@ -73,9 +83,39 @@ public class Ventana_Principal {
       public Personaje getPj(){
         return pj;
       }
+      public JPanel getPrincipal(){
+        return principal;
+      }
+      public JPanel getSuperior(){
+        return superior;
+      }
+      public JPanel getInferior(){
+        return inferior;
+      }
+      public JLabel getEtOro(){
+        return etOro;
+      }
+      public JLabel getEtEXP(){
+        return etEXP;
+      }
+      public JLabel getEtNivel(){
+        return etNivel;
+      }
+      public JLabel getAtributos(){
+        return atributos;
+      }
       //SETTERS
       public void setPj(Personaje pj){
         this.pj = pj;
       }
-      
+      public void setPrincipal(JPanel principal){
+        this.principal = principal;
+      }
+      public void setSuperior(JPanel superior){
+        this.superior = superior;
+      }
+      public void setInferior(JPanel inferior){
+        this.inferior = inferior;
+      }
+
 }
