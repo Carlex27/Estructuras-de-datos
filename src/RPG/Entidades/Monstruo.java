@@ -1,4 +1,4 @@
-package RPG;
+package RPG.Entidades;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -6,8 +6,10 @@ import java.awt.Font;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
+import RPG.Interfaces.I_Atacable;
 
-public class Monstruo extends Entidad implements E_Atacable{
+
+public class Monstruo extends Entidad implements I_Atacable{
     private int dropOro, dropExp;
     private JLabel etNombre, etImagen;
 

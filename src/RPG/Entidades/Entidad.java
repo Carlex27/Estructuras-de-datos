@@ -1,11 +1,14 @@
-package RPG;
+package RPG.Entidades;
 
 import javax.swing.JProgressBar;
+
+import RPG.Interfaces.I_Atacable;
+import RPG.Interfaces.I_Curable;
 
 import java.awt.Color;
 import java.awt.Dimension;
 
-public class Entidad implements E_Atacable{
+public class Entidad implements I_Atacable{
     private String nombre;
     private int vidaActual, ataque, defensa;
     private double vidaMaxima;
@@ -31,7 +34,7 @@ public class Entidad implements E_Atacable{
         barraVida.setStringPainted(true);
         barraVida.setString(vidaActual + "/" + (int)vidaMaxima);
     }
-    public void atacar(E_Atacable enemigo){
+    public void atacar(I_Atacable enemigo){
         enemigo.recibirAtaque(ataque);
     }
     public void recibirAtaque(int danio){
@@ -47,6 +50,7 @@ public class Entidad implements E_Atacable{
         }
         
     }
+    
 
     // Getters
     public String getNombre() {

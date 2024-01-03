@@ -1,6 +1,10 @@
-package RPG;
+package RPG.Ventanas;
 
 import javax.swing.*;
+
+import RPG.Entidades.Monstruo;
+import RPG.Entidades.Personaje;
+
 import java.awt.*;
 
 public class Exploracion {

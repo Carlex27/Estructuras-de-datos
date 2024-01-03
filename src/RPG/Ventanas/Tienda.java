@@ -1,6 +1,9 @@
-package RPG;
+package RPG.Ventanas;
 
 import javax.swing.*;
+
+import RPG.Entidades.Personaje;
+
 import java.awt.*;
 public class Tienda {
     private JDialog marco;
@@ -74,7 +77,7 @@ public class Tienda {
         marco.setVisible(true);
     }
     private void prepararTexto(){
-        infoTienda.setText(infoTienda.getText() + "Bienvenido a la tienda PITUDO, ¿en qué puedo ayudarte?\n"
+        infoTienda.setText(infoTienda.getText() + "Bienvenido a la tienda, ¿en qué puedo ayudarte?\n"
                                                 +"Curar: 10 monedas de oro (+20 ps)\n"
                                                 + "Comprar Armas: 20 monedas de oro (+5 atq)\n");
     }

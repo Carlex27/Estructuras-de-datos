@@ -1,8 +1,10 @@
-package RPG;
+package RPG.Ventanas;
 
 import java.awt.*;
 
 import javax.swing.*;
+
+import RPG.Entidades.Personaje;
 
 public class Ventana_Final {
     private JTextArea texto;

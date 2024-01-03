@@ -1,5 +1,7 @@
 package RPG;
 
+import RPG.Entidades.Personaje;
+import RPG.Ventanas.Ventana_Principal;
 
 public class Main {
     public static void main(String[] args) {

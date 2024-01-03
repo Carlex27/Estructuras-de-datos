@@ -1,4 +1,4 @@
-package RPG;
+package RPG.Entidades;
 
 public class Personaje extends Entidad{
     private int nivel,oro, exp, exp_Necesaria ;
