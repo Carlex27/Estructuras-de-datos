@@ -3,7 +3,7 @@ import java.util.Date;
 import java.io.Serializable;
 import java.util.Calendar;
 
-import TablaHash.Hotel.Reserva;
+import TablaHash.Ejercicio_hotel.Reserva;
 
 public class TablaHash implements Serializable {
     private final int TAM_TABLA = 50;

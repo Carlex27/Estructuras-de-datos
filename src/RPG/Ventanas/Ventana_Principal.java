@@ -6,7 +6,7 @@ import javax.swing.*;
 import RPG.Entidades.Personaje;
 
 public class Ventana_Principal {
-  private JFrame ventana;
+    private JFrame ventana;
     private JPanel superior, inferior, principal;
     
     private JLabel etNombre, etNivel, etEXP, etOro, atributos;
@@ -14,6 +14,7 @@ public class Ventana_Principal {
     private JButton botExplorar, botTienda;
 
     private Personaje pj;
+    //Metodo constructor de la ventana principal
     public Ventana_Principal (Personaje pj){
         this.pj = pj;
         ventana = new JFrame("RPG");
@@ -33,6 +34,7 @@ public class Ventana_Principal {
         botExplorar = new JButton("Explorar");
         botTienda = new JButton("Tienda");
       }
+      //Monta la escena 
       public void comenzarJuego(){
         montarEscena();
         ventana.setVisible(true);
